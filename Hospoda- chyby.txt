@@ -1,0 +1,12 @@
+1. Chybi vygenerovana dokumentace vsech modelu z EA v jednom pdf souboru
+2. Vize obsahuje BPM a funkcni i nefunkèní požadavky.
+3. Ve vizi chybí FURPS.
+4. Nekonkrétní požadavky. ( zvýšení efektivity práce v podniku o 15% )
+5. Chybí výkaz práce.
+6. BPM- Proces Objednávky-Decision Potvrzeno? má pouze vìtev Ano.
+7. BPM u nìkterých decision nejsou pojmenované cesty (Ano/Ne).
+8. BPM Sestavení menu obsahuje proces Objednávka zboží. Šlo by spojit do jednoho nebo odkazovat.
+9. Chybí doménový model.
+10. Use-case velmi jednoduché, chybí použití include/exclude.
+11. Chybí mapování use-case - požadavky.
+12. V projektu chybí požadavky. (jsou jen ve vizi)
