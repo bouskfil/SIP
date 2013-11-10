@@ -1,0 +1,18 @@
+@(group: String, projects: List[Subject])
+
+<li data-group="@group">
+    <span class="toggle"></span>
+    <h4 class="groupName">@group</h4>
+    <dl class="options">
+        <dt>Možnosti</dt>
+        <dd>
+            <button class="btn primary">Nový předmět</button>
+            <button class="btn primary">Odebrat Předmět</button>
+        </dd>
+    </dl>
+    <ul>
+    @projects.map { subject =>
+        @views.html.subjects.item(subject)
+    }
+    </ul>
+</li>

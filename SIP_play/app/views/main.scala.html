@@ -1,0 +1,72 @@
+@(title: Html, nav: String = "")(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Školní informační portál</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div class="topbar">
+            <div class="fill">
+                <div class="container">
+                    <a class="brand" href="@routes.Application.index()">ŠIP</a>
+                    <ul class="nav">
+                        <li class="@("active".when(nav == "subjects"))">
+                            <a href="@routes.Subjects.blank()">Předměty</a>
+                        </li>
+                        <li class="@("active".when(nav == "schedule"))">
+                            <a href="#">Rozvrh</a>
+                        </li>
+                        <li class="@("active".when(nav == "studyresults"))">
+                            <a href="#">Studijní výsledky</a>
+                        </li>
+                        <li class="@("active".when(nav == "exam"))">
+                            <a href="#">Zápočty a zkoušky</a>
+                        </li>
+                        <li class="@("active".when(nav == "homework"))">
+                            <a href="#">Domácí úkoly</a>
+                        </li>
+                        <li class="@("active".when(nav == "other"))">
+                            <a href="#">Ostatní</a>
+                        </li>
+                        <li class="@("active".when(nav == "signout"))">
+                            <a href="@routes.Application.logout()">Odhlásit se</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="content">
+
+                <div class="page-header">
+                    <h1>@title</h1>
+                </div>
+
+                <div class="row">
+                    <div class="span14">
+                    @content
+                    </div>
+                </div>
+
+            </div>
+
+            <footer>
+                <p>
+                    ve vývoji
+                </p>
+            </footer>
+
+        </div>
+
+    </body>
+</html>
