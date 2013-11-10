@@ -1,0 +1,47 @@
+# Teachers
+
+- &novak !!models.Teacher
+  name: Jan Novák
+
+- &svoboda !!models.Teacher
+  name:       Tomáš Svoboda
+
+- &novotny !!models.Teacher
+  name:       Lukáš Novotný
+
+- &rychla !!models.Teacher
+  name:       Lucie Rychlá
+
+- &skokava !!models.Teacher
+  name:       Tereza Skokavá
+
+- &hruby !!models.Teacher
+  name:       Filip Hrubý
+
+# Subjects
+
+- &matematika !!models.Subject
+  name:       Matematika
+  katedra:    Katedra Matematiky
+  teachers:
+      - *novak
+      - *rychla
+
+- &cestina !!models.Subject
+  name:       Čeština
+  katedra:    Katedra Jazyků
+  teachers:
+      - *novak
+      - *hruby
+      - *skokava
+
+- &anglictina !!models.Subject
+  name:       Angličtina
+  katedra:    Katedra Jazyků
+  teachers:
+
+# Users
+- &admin !!models.User
+  email:      admin@admin.com
+  name:       admin
+  password:   admin

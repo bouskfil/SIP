@@ -1,0 +1,36 @@
+@(subject: Subject)
+
+<li data-project="@subject.id">
+    <div style="border: solid; padding: 20px">
+    <a class="name" href="#">@subject.name</a>
+    @helper.form(action = routes.Subjects.delete(subject.id)) {
+        <input class="btn primary" type="submit" value="Smazat">
+    }
+    @helper.form(action = routes.Subjects.edit(subject.id)) {
+        <input class="btn primary" type="submit" value="Upravit">
+    }
+
+    @if(subject.garant != null){
+        Garant:
+        <ul>
+            <li>@subject.garant</li>
+        </ul>
+    }  else {
+        předmět nemá garanta<br>
+    }
+
+    @if(subject.teachers.isEmpty){
+        <span>předmět nemá žádné učitele</span>
+    } else {
+        Učitelé:
+        <ul>
+        @for(teacher <- subject.teachers) {
+            <li>@teacher.name</li>
+        }
+        </ul>
+    }
+    </div>
+    <br>
+
+
+</li>
