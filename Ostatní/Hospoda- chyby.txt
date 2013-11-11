@@ -1,4 +1,4 @@
-1. Chybi vygenerovana dokumentace vsech modelu z EA v jednom pdf souboru
+1. Chybi vygenerovana dokumentace vsech modelu z EA v jednom pdf souboru.
 2. Vize obsahuje BPM a funkcni i nefunkèní požadavky.
 3. Ve vizi chybí FURPS.
 4. Nekonkrétní požadavky. ( zvýšení efektivity práce v podniku o 15% )
