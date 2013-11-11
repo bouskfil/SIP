@@ -1,5 +1,12 @@
 package controllers;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: Filip Bouška
+ * Date: 07.11.13
+ * Time: 22:25
+ */
+
 import play.*;
 import play.mvc.*;
 import play.data.*;
@@ -12,7 +19,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(views.html.index.render());
+        return ok(index.render());
     }
 
     public static Result login() {

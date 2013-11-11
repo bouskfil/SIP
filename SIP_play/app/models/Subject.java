@@ -2,13 +2,10 @@ package models;
 
 /**
  * Created with IntelliJ IDEA.
- * User: MacBook
+ * User: Filip Bouška
  * Date: 07.11.13
  * Time: 22:25
- * To change this template use File | Settings | File Templates.
  */
-
-
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -34,18 +31,14 @@ public class Subject extends Model{
     @Required(groups = {All.class})
     public String katedra;
     @Required(groups = {All.class})
+    public String information;
+    @Required(groups = {All.class})
     public String garant;
     @ManyToMany(cascade = CascadeType.REMOVE)
     public List<Teacher> teachers = new ArrayList<Teacher>();
 
     public static Finder<Long, Subject> find = new Finder(Long.class, Subject.class);
 
-    public Subject(Subject s){
-        this.name = s.name;
-        this.katedra = s.katedra;
-        this.garant = s.garant;
-
-    }
 
     public static void create(Subject subject){
         subject.save();
@@ -53,6 +46,16 @@ public class Subject extends Model{
 
     public static void delete(Long id){
         find.ref(id).delete();
+    }
+
+    public void copySubject(Long id){
+        Subject oldSubject = Subject.find.byId(id);
+        oldSubject.name = this.name;
+        oldSubject.katedra = this.katedra;
+        oldSubject.garant = this.garant;
+        oldSubject.information = this.information;
+        oldSubject.update();
+
     }
 
 }

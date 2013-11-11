@@ -1,4 +1,4 @@
-@(subjectForm: Form[Subject], teachers: List[Teacher])
+@(subjectForm: Form[Subject])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -9,12 +9,10 @@
 
 @main(title, nav = "signup") {
 
-    @helper.form(action = routes.Subjects.save(subjectForm.get.id)) {
+    @helper.form(action = routes.SubjectController.save(subjectForm.get.id)) {
 
         <fieldset>
             <legend>Informace o předmětu</legend>
-
-
 
             @inputText(
                 subjectForm("name"),
@@ -29,25 +27,23 @@
                 '_help -> "Zadejte katedru."
             )
 
-
-
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Garant&nbsp;&nbsp;&nbsp;&nbsp;
-            <select name="garant">
-                <option value="-- Zadejte garanta --"></option>
-                @for(teacher <- teachers) {
-                    <option value="@teacher.name">@teacher.name</option>
-                }
-            </select>
-
-
-
-
+            @select(
+                subjectForm("garant"),
+                options = options(Teacher.getAllNames),
+                '_default -> "--- Vyberte garanta ---",
+                '_label -> "Garant",
+                '_help -> "Vyberte garanta."
+            )
+            @textarea(
+                subjectForm("information"),
+                '_label -> "Informace",
+                '_help -> "Zadejte informace o předmětu."
+            )
         </fieldset>
-
 
         <div class="actions">
             <input type="submit" class="btn primary" value="Upravit">
-            <a href="@routes.Subjects.blank" class="btn">Zrušit</a>
+            <a href="@routes.SubjectController.blank" class="btn">Zrušit</a>
         </div>
 
     }

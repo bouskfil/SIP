@@ -2,11 +2,11 @@ package controllers;
 
 /**
  * Created with IntelliJ IDEA.
- * User: MacBook
- * Date: 10.11.13
- * Time: 15:25
- * To change this template use File | Settings | File Templates.
+ * User: Filip Bouška
+ * Date: 07.11.13
+ * Time: 22:25
  */
+
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;

@@ -3,11 +3,11 @@
 <li data-project="@subject.id">
     <div style="border: solid; padding: 20px">
     <a class="name" href="#">@subject.name</a>
-    @helper.form(action = routes.Subjects.delete(subject.id)) {
-        <input class="btn primary" type="submit" value="Smazat">
+    @helper.form(action = routes.SubjectController.delete(subject.id)) {
+        <input class="btn" type="submit" value="Smazat">
     }
-    @helper.form(action = routes.Subjects.edit(subject.id)) {
-        <input class="btn primary" type="submit" value="Upravit">
+    @helper.form(action = routes.SubjectController.edit(subject.id)) {
+        <input class="btn" type="submit" value="Upravit">
     }
 
     @if(subject.garant != null){

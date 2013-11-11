@@ -3,21 +3,21 @@
 # ~~~~
 
 # Home page
-GET         /                        controllers.Application.index()
-GET         /login                   controllers.Application.login()
-GET         /logout                     controllers.Application.logout()
-POST        /login                   controllers.Application.authenticate()
+GET         /                          controllers.Application.index()
+GET         /login                     controllers.Application.login()
+GET         /logout                    controllers.Application.logout()
+POST        /login                     controllers.Application.authenticate()
 
 # Subject
 
-POST        /subject/create          controllers.Subjects.add()
-POST        /subject/:id/edit        controllers.Subjects.save(id: Long)
-POST        /tasks/:id/delete        controllers.Subjects.delete(id: Long)
-POST        /tasks/:id/edit          controllers.Subjects.edit(id: Long)
-GET         /subjects                controllers.Subjects.blank()
-GET         /subjects/create         controllers.Subjects.blankCreate()
+POST        /subject/create            controllers.SubjectController.add()
+POST        /subject/edited/:id        controllers.SubjectController.save(id: Long)
+POST        /subject/edit/:id          controllers.SubjectController.edit(id: Long)
+POST        /subject/delete/:id        controllers.SubjectController.delete(id: Long)
+GET         /subject                   controllers.SubjectController.blank()
+GET         /subject/create            controllers.SubjectController.create()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file            controllers.Assets.at(path="/public", file)
+GET         /assets/*file              controllers.Assets.at(path="/public", file)
 

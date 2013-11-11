@@ -2,18 +2,17 @@ package models;
 
 /**
  * Created with IntelliJ IDEA.
- * User: MacBook
+ * User: Filip Bouška
  * Date: 07.11.13
  * Time: 22:25
- * To change this template use File | Settings | File Templates.
  */
-
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,6 +37,13 @@ public class Teacher extends Model{
 
     public static void delete(Long id){
         find.ref(id).delete();
+    }
+    public static List<String> getAllNames(){
+        List<String> names = new ArrayList();
+        for(Teacher t : all()) {
+            names.add(t.name);
+        }
+        return names;
     }
 
 
