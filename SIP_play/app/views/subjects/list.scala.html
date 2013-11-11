@@ -4,14 +4,14 @@
 @import helper.twitterBootstrap._
 
     @title = {
-        Předměty  <small><a href="@routes.Subjects.blankCreate">přidat předmět</a></small>
+        Předměty  <small><a href="@routes.SubjectController.create">přidat předmět</a></small>
     }
 
-@main(title, nav = "subjects") {
+@main(title, nav = "SubjectController") {
 
     <h3>Seznam předmětů</h3>
 
-    <ul id="subjects">
+    <ul id="SubjectController">
     @subjects.groupBy(_.katedra).map {
         case (subject, subjects) => {
             @views.html.subjects.group(subject, subjects)

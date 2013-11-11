@@ -2,11 +2,11 @@ package models;
 
 /**
  * Created with IntelliJ IDEA.
- * User: MacBook
- * Date: 10.11.13
- * Time: 15:09
- * To change this template use File | Settings | File Templates.
+ * User: Filip Bouška
+ * Date: 07.11.13
+ * Time: 22:25
  */
+
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
