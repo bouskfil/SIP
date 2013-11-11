@@ -1,0 +1,29 @@
+[0m[[0mdebug[0m] [0mInvalidating /Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/controllers/Application.class: stamp changed from lastModified(1384095618000) to lastModified(1384095619000)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/controllers/Application.class)[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/app/controllers/Application.java)[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/app/controllers/Application.java)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Java source to /Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mAttempting to call javac directly...[0m
+[0m[[0mdebug[0m] [0mcom.sun.tools.javac.Main not found with appropriate method signature; forking javac instead[0m
+[0m[[0mdebug[0m] [0mForking javac: javac @/var/folders/rr/54s9tmyd4jggvk7gx71yc8jr0000gn/T/sbt_cfa18c1f/argfile[0m
+[0m[[0mdebug[0m] [0mjavac returned exit code: 0[0m
+[0m[[0mdebug[0m] [0mJava compilation took 1.24396 s[0m
+[0m[[0mdebug[0m] [0mJava analysis took 0.01149 s[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive public inheritance: Set()[0m
+[0m[[0mdebug[0m] [0mInvalidated by direct dependency: Set()[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m

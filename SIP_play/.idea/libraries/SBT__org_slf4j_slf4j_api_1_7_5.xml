@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.slf4j:slf4j-api:1.7.5">
+    <CLASSES>
+      <root url="jar:///usr/local/Cellar/play/2.2.0/libexec/repository/local/org.slf4j/slf4j-api/1.7.5/jars/slf4j-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
