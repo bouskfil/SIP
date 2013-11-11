@@ -1,0 +1,17 @@
+@(group: String, teachers: List[Teacher])
+
+<li data-group="@group">
+    <span class="toggle"></span>
+    <dl class="options">
+        <dt>Možnosti</dt>
+        <dd>
+            <button class="newTeacher">Nový učitel</button>
+            <button class="deleteTeacher">Odebrat učitele</button>
+        </dd>
+    </dl>
+    <ul>
+    @teachers.map { teacher =>
+        @views.html.teachers.item(teacher)
+    }
+    </ul>
+</li>

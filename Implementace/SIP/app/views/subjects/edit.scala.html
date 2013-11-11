@@ -1,0 +1,51 @@
+@(subjectForm: Form[Subject])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @title = {
+        Přidat předmět
+    }
+
+@main(title, nav = "signup") {
+
+    @helper.form(action = routes.SubjectController.save(subjectForm.get.id)) {
+
+        <fieldset>
+            <legend>Informace o předmětu</legend>
+
+            @inputText(
+                subjectForm("name"),
+                '_label -> "Název předmětu",
+                '_help -> "Zadejte jméno předmětu.",
+                '_error -> subjectForm.globalError
+            )
+
+            @inputText(
+                subjectForm("katedra"),
+                '_label -> "Katedra",
+                '_help -> "Zadejte katedru."
+            )
+
+            @select(
+                subjectForm("garant"),
+                options = options(Teacher.getAllNames),
+                '_default -> "--- Vyberte garanta ---",
+                '_label -> "Garant",
+                '_help -> "Vyberte garanta."
+            )
+            @textarea(
+                subjectForm("information"),
+                '_label -> "Informace",
+                '_help -> "Zadejte informace o předmětu."
+            )
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Upravit">
+            <a href="@routes.SubjectController.blank" class="btn">Zrušit</a>
+        </div>
+
+    }
+
+}
