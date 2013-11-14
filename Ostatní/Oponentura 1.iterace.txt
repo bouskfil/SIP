@@ -1,0 +1,12 @@
+﻿BPM		některé výchozí body od Systému ?						
+		Vypsat termín ZK: chybí kapacita termínu						
+		Zapsat se na termín: položky na hranicích partition						
+		Proces známek: co když jen zápočet						
+		Zkouška: co když předmět nemá zkoušku - mohl student uspět ?						
+		Proces úkolů: spojené odevzdání studentem a kontrolu učitelem						
+		Odevzdání úkoli: položky na hranicích partition						
+BDM		Zkouška: dle BPM vypisuje učitel						
+		Úkol: nemá hodnocení						
+		Známka: je hodnocena celá zkouška, nebo student						
+		Zápočet: není						
+Use Case	Hiararchie uživatelů						
