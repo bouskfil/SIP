@@ -20,6 +20,8 @@ GET         /subject/create            controllers.SubjectController.create()
 #Other
 
 GET         /other                     controllers.OtherController.choose()
+GET         /other/create              controllers.OtherController.create()
+POST        /other/create              controllers.OtherController.add()
 
 
 # Map static resources from the /public folder to the /assets URL path

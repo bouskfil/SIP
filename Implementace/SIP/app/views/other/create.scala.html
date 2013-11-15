@@ -1,0 +1,46 @@
+@(userForm: Form[User])
+
+@import helper._
+@import helper.twitterBootstrap._
+@import scala._
+
+@title = {
+        Vytvořit nového uživatele
+    }
+@main(title,nav = "OtherController") {
+
+@helper.form(action = routes.OtherController.create) {
+
+        <fieldset>
+            <legend>Informace o uživateli</legend>
+
+            @inputText(
+                userForm("name"),
+                '_label -> "Jméno",
+                '_help -> "Zadejte jméno a příjmení.",
+                '_error -> userForm.globalError
+            )
+
+            @inputText(
+                userForm("email"),
+                '_label -> "example@example.com",
+                '_help -> "Zadejte email."
+            )
+            @inputText(
+                userForm("password"),
+                '_label -> "Heslo",
+                '_help -> "Zadejte heslo.",
+                '_error -> userForm.globalError
+            )
+
+        </fieldset>
+
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Vytvořit uživatele">
+            <a href="@routes.OtherController.choose" class="btn">Zrušit</a>
+        </div>
+
+    }
+
+}
