@@ -17,6 +17,10 @@ POST        /subject/delete/:id        controllers.SubjectController.delete(id: 
 GET         /subject                   controllers.SubjectController.blank()
 GET         /subject/create            controllers.SubjectController.create()
 
+#Other
+
+GET         /other                     controllers.OtherController.choose()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file              controllers.Assets.at(path="/public", file)
