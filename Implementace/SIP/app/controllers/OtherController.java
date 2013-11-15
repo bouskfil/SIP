@@ -28,9 +28,28 @@ public class OtherController extends Controller{
     }
     
     public static Result add() {
-        User user = Form.form(User.class).bindFromRequest().get();
-        user.save();
-        return redirect(routes.OtherController.choose());
+        
+        
+        Form<User> filledForm = userForm.bindFromRequest();
+        
+        
+        // Check repeated password
+        if(!filledForm.field("password").valueOr("").isEmpty()) {
+            if(!filledForm.field("password").valueOr("").equals(filledForm.field("repeatPassword").value())) {
+                filledForm.reject("repeatPassword", "Hesla nejsou stejná.");
+            }
+        }
+        
+        
+        
+        if(filledForm.hasErrors()) {
+            return badRequest(create.render(filledForm));
+        } else {
+            User user = filledForm.get();
+            user.save();
+            return ok(createSummary.render(user));
+        }
+        
     }
     
 }

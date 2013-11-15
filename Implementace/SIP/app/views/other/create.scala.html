@@ -9,7 +9,7 @@
     }
 @main(title,nav = "OtherController") {
 
-@helper.form(action = routes.OtherController.create) {
+@helper.form(action = routes.OtherController.add) {
 
         <fieldset>
             <legend>Informace o uživateli</legend>
@@ -23,14 +23,20 @@
 
             @inputText(
                 userForm("email"),
-                '_label -> "example@example.com",
+                '_label -> "Zadejte email",
                 '_help -> "Zadejte email."
             )
-            @inputText(
+            @inputPassword(
                 userForm("password"),
                 '_label -> "Heslo",
-                '_help -> "Zadejte heslo.",
-                '_error -> userForm.globalError
+                '_help -> "Zadejte heslo, alespoň 6 znaků.",
+                '_error -> userForm.error("password")
+            )
+            @inputPassword(
+                userForm("repeatPassword"), 
+                '_label -> "Zopakujte heslo",
+                '_help -> "Napište heslo znovu.",
+                '_error -> userForm.error("password")
             )
 
         </fieldset>
