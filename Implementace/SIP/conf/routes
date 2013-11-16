@@ -21,6 +21,7 @@ GET         /subject/create            controllers.SubjectController.create()
 
 GET         /other                     controllers.OtherController.choose()
 GET         /other/create              controllers.OtherController.create()
+GET         /other/showAll             controllers.OtherController.showAll()
 POST        /other/create              controllers.OtherController.add()
 
 
