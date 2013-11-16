@@ -4,7 +4,7 @@
 		module="sip_play_2.10"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20131110110141"
+		publication="20131116192345"
 	>
 		<description>
 		SIP_play

@@ -43,6 +43,8 @@ Seq[Any](format.raw/*1.42*/("""
         """),_display_(Seq[Any](/*15.10*/views/*15.15*/.html.subjects.item(subject))),format.raw/*15.43*/("""
     """)))})),format.raw/*16.6*/("""
     </ul>
+
+
 </li>"""))}
     }
     
@@ -55,9 +57,9 @@ Seq[Any](format.raw/*1.42*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sun Nov 10 22:50:42 CET 2013
-                    SOURCE: /Users/MacBook/Dropbox/FEL/05_SI/SIP_play/app/views/subjects/group.scala.html
-                    HASH: 3d2e143fd46692cef71165a198c654810ae3447e
+                    DATE: Sat Nov 16 19:23:47 CET 2013
+                    SOURCE: /Users/MacBook/Dropbox/FEL/05_SI/SIP/Implementace/SIP/app/views/subjects/group.scala.html
+                    HASH: cf1651f201e8c1fa18f5c74f120b36a096b8e3da
                     MATRIX: 797->1|931->41|985->60|1011->65|1109->128|1135->133|1389->352|1406->360|1419->364|1470->377|1516->387|1530->392|1580->420|1617->426
                     LINES: 26->1|29->1|31->3|31->3|33->5|33->5|42->14|42->14|42->14|42->14|43->15|43->15|43->15|44->16
                     -- GENERATED --
