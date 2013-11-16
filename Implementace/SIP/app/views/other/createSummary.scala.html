@@ -1,0 +1,25 @@
+@(user: User)
+
+@main(Html("Uživatel vytvořen"), nav = "other/create") {
+    
+    <h2>Vytvořený účet:</h2>
+    
+    <h6>Jméno</h6>
+    
+    <p>
+        @user.name
+    </p>
+    
+    <h6>Email</h6>
+    
+    <p>
+        @user.email
+    </p>
+    
+    <h6>Heslo</h6>
+    
+    <p>
+        @user.password
+    
+    
+}

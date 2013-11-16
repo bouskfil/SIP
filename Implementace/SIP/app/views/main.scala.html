@@ -33,7 +33,7 @@
                             <a href="#">Domácí úkoly</a>
                         </li>
                         <li class="@("active".when(nav == "other"))">
-                            <a href="#">Ostatní</a>
+                            <a href="@routes.OtherController.choose">Ostatní</a>
                         </li>
                         <li class="@("active".when(nav == "signout"))">
                             <a href="@routes.Application.logout">Odhlásit se</a>
