@@ -26,6 +26,9 @@ public class OtherController extends Controller{
     public static Result create() {
         return ok(create.render(userForm));
     }
+    public static Result showAll() {
+        return ok(showAll.render(User.find.all()));
+    }
     
     public static Result add() {
         
