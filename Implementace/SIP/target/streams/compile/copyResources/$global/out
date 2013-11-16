@@ -1,0 +1,7 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/application.conf,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/evolutions,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/evolutions)[0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/initial-data.yml,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/initial-data.yml)[0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/routes,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/evolutions/default,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/evolutions/default)[0m
+[0m[[0mdebug[0m] [0m	(/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/conf/evolutions/default/1.sql,/Users/MacBook/Dropbox/FEL/05_SI/SIP_play/target/scala-2.10/classes/evolutions/default/1.sql)[0m
