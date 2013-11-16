@@ -10,4 +10,5 @@ import play.db.ebean.Model;
  * To change this template use File | Settings | File Templates.
  */
 public class Exam extends Model {
+    public long id;
 }
