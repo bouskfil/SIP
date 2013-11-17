@@ -7,7 +7,7 @@ package controllers;
  * Time: 22:25
  */
 
-import models.Subject;
+import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.subjects.*;
@@ -19,11 +19,11 @@ public class SubjectController extends Controller {
     final static Form<Subject> subjectForm = form(Subject.class, Subject.All.class);
 
     public static Result blank() {
-        return ok(list.render(Subject.find.all()));
+        return ok(list.render(Subject.find.all(), Application.loggedUser));
     }
 
     public static Result create(){
-        return ok(form.render(subjectForm));
+        return ok(form.render(subjectForm, Application.loggedUser));
     }
 
     public static Result add() {
@@ -40,7 +40,7 @@ public class SubjectController extends Controller {
     public static Result edit(Long id) {
         Subject existingSubject = Subject.find.ref(id);
         Form<Subject> prefilledForm = form(Subject.class).fill(existingSubject);
-        return ok(edit.render(prefilledForm));
+        return ok(edit.render(prefilledForm, Application.loggedUser));
     }
 
     public static Result save(Long id) {

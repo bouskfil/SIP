@@ -1,6 +1,6 @@
-@(user: User)
+@(user: User, loggedUser: User)
 
-@main(Html("Uživatel vytvořen"), nav = "other/create") {
+@main(Html("Uživatel vytvořen"), nav = "other/create", user = loggedUser) {
     
     <h2>Vytvořený účet:</h2>
     

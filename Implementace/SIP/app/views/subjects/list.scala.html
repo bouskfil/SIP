@@ -1,4 +1,4 @@
-@(subjects: List[Subject])
+@(subjects: List[Subject], loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -7,7 +7,7 @@
         Předměty  <small><a href="@routes.SubjectController.create">přidat předmět</a></small>
     }
 
-@main(title, nav = "SubjectController") {
+@main(title, nav = "SubjectController", user = loggedUser) {
 
     <h3>Seznam předmětů</h3>
 

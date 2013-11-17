@@ -20,14 +20,14 @@ public class OtherController extends Controller{
     final static Form<User> userForm = form(User.class, User.All.class);
 
     public static Result choose() {
-        return ok(choose.render());
+        return ok(choose.render(Application.loggedUser));
     }
     
     public static Result create() {
-        return ok(create.render(userForm));
+        return ok(create.render(userForm, Application.loggedUser));
     }
     public static Result showAll() {
-        return ok(showAll.render(User.find.all()));
+        return ok(showAll.render(User.find.all(), Application.loggedUser));
     }
     
     public static Result add() {
@@ -46,11 +46,11 @@ public class OtherController extends Controller{
         
         
         if(filledForm.hasErrors()) {
-            return badRequest(create.render(filledForm));
+            return badRequest(create.render(filledForm, Application.loggedUser));
         } else {
             User user = filledForm.get();
             user.save();
-            return ok(createSummary.render(user));
+            return ok(createSummary.render(user, Application.loggedUser));
         }
         
     }

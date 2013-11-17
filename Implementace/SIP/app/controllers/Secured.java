@@ -10,6 +10,10 @@ package controllers;
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
+import play.*;
+import play.mvc.*;
+import play.mvc.Http.*;
+import models.*;
 
 public class Secured extends Security.Authenticator {
 

@@ -1,4 +1,4 @@
-@(subjectForm: Form[Subject])
+@(subjectForm: Form[Subject], loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -7,7 +7,7 @@
         Přidat předmět
     }
 
-@main(title, nav = "signup") {
+@main(title, nav = "signup", user = loggedUser) {
 
     @helper.form(action = routes.SubjectController.save(subjectForm.get.id)) {
 

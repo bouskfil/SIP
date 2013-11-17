@@ -1,4 +1,5 @@
-@main(Html("Školní Informační Portál")) {
+@(user: User)
+@main(Html("Školní Informační Portál"), user= user) {
 
     <p>
     <img id="logo" src="@routes.Assets.at("images/logo.png")">

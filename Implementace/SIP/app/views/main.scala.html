@@ -1,4 +1,4 @@
-@(title: Html, nav: String = "")(content: Html)
+@(title: Html, nav: String = "", user: User)(content: Html)
 
 <!DOCTYPE html>
 
@@ -35,11 +35,12 @@
                         <li class="@("active".when(nav == "other"))">
                             <a href="@routes.OtherController.choose">Ostatní</a>
                         </li>
-                        <li class="@("active".when(nav == "signout"))">
+                        <li class="@("active".when(nav == "signout"))">                        
                             <a href="@routes.Application.logout">Odhlásit se</a>
-                        </li>
-
+                        </li>                        
                     </ul>
+                        <li><dt>@user.name <span>(@user.email)</span></dt>
+                        </li>
                 </div>
             </div>
         </div>
