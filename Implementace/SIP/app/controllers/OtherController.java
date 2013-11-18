@@ -15,9 +15,10 @@ import static play.data.Form.*;
  *
  * @author Dominik
  */
+@Security.Authenticated(Secured.class)
 public class OtherController extends Controller{
     
-    final static Form<User> userForm = form(User.class, User.All.class);
+    final static Form<User> userForm = form(User.class);
 
     public static Result choose() {
         return ok(choose.render(Application.loggedUser));
