@@ -17,6 +17,11 @@
             @views.html.subjects.group(subject, subjects)
         }
     }
+        <ul>
+        @subjects.map { subject =>
+            @views.html.subjects.item(subject)
+        }
+        </ul>
     </ul>
 
 
