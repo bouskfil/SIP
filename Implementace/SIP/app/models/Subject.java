@@ -21,8 +21,6 @@ import java.util.List;
 @Entity
 public class Subject extends Model{
 
-    public interface All{}
-
     @Id
     public Long id;
 

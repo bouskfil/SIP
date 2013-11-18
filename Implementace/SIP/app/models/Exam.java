@@ -19,9 +19,6 @@ import java.util.List;
 
 @Entity
 public class Exam extends Model {
-<<<<<<< HEAD
-    public long id;
-=======
 
     @Id
     private Long id;
@@ -30,8 +27,4 @@ public class Exam extends Model {
 
     @ManyToMany
     private List<Student> students = new ArrayList<Student>();
-
-
-
->>>>>>> bouska
 }

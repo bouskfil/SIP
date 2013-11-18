@@ -23,11 +23,9 @@ public class SubjectController extends Controller {
     }
 
     public static Result create(){
-<<<<<<< HEAD
-        return ok(form.render(subjectForm, Application.loggedUser));
-=======
-        return ok(form.render(formSubject));
->>>>>>> bouska
+
+        return ok(form.render(formSubject, Application.loggedUser));
+
     }
 
     public static Result add() {
