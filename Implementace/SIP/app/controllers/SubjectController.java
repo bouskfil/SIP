@@ -16,14 +16,18 @@ import static play.data.Form.*;
 @Security.Authenticated(Secured.class)
 public class SubjectController extends Controller {
 
-    final static Form<Subject> subjectForm = form(Subject.class, Subject.All.class);
+    final static Form<Subject> formSubject = form(Subject.class);
 
     public static Result blank() {
         return ok(list.render(Subject.find.all(), Application.loggedUser));
     }
 
     public static Result create(){
+<<<<<<< HEAD
         return ok(form.render(subjectForm, Application.loggedUser));
+=======
+        return ok(form.render(formSubject));
+>>>>>>> bouska
     }
 
     public static Result add() {
