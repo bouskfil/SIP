@@ -45,3 +45,10 @@
   email:      admin@admin.com
   name:       admin
   password:   admin
+  userRole:   admin
+  
+- &student !!models.User
+  email:      student@student.com
+  name:       student
+  password:   student
+  userRole:   student

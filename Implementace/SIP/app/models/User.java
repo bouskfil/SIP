@@ -33,12 +33,22 @@ public class User extends Model {
     @Constraints.Required
     @Constraints.MinLength(value = 6)
     public String password;
+    
+    @Constraints.Required
+    public String userRole;
 
     public User(String email, String name, String password) {
         this.email = email;
         this.name = name;
         this.password = password;
     }
+    public User(String email, String name, String password, String userRole) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.userRole = userRole;
+    }
+    
 
     public static Finder<String,User> find = new Finder<String,User>(
             String.class, User.class

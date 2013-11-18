@@ -57,7 +57,7 @@ public class Application extends Controller {
 
         public String validate() {
             if (User.authenticate(email, password) == null) {
-                return "Špatné uživatelské jméno nebo heslo. (zkuste: admin@admin.com a heslo: admin)";
+                return "Špatné uživatelské jméno nebo heslo. (zkuste: admin@admin.com a heslo: admin nebo student@student.com a heslo: student)";
             }
             return null;
         }

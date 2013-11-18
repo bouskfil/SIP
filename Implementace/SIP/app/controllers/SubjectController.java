@@ -23,9 +23,7 @@ public class SubjectController extends Controller {
     }
 
     public static Result create(){
-
         return ok(form.render(formSubject, Application.loggedUser));
-
     }
 
     public static Result add() {
