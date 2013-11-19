@@ -26,6 +26,13 @@
                 '_label -> "Zadejte email",
                 '_help -> "Zadejte email."
             )
+            @select(
+                userForm("userRole"),
+                options = options(User.getUserRoles),
+                '_default -> "--- Vyberte uživatelskou roli ---",
+                '_label -> "Uživatelská role",
+                '_help -> "Vyberte uživatelskou roli pro vytvářeného uživatele."
+            )
             @inputPassword(
                 userForm("password"),
                 '_label -> "Heslo",

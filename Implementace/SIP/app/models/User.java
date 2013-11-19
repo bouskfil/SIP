@@ -35,7 +35,8 @@ public class User extends Model {
     public String password;
     
     @Constraints.Required
-    public String userRole;
+    public String userRole;    
+   
 
     public User(String email, String name, String password) {
         this.email = email;
@@ -61,5 +62,13 @@ public class User extends Model {
     public static User authenticate(String email, String password) {
         return find.where().eq("email", email)
                 .eq("password", password).findUnique();
+    }
+    public static List<String> getUserRoles(){
+        List <String> list=new ArrayList<String>();
+        list.add("admin");
+        list.add("student");
+        list.add("teacher");
+        
+        return list;
     }
 }
