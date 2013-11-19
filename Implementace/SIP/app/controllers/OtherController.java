@@ -25,7 +25,8 @@ public class OtherController extends Controller{
             case "admin": 
                 return ok(choose.render(Application.loggedUser));
             case "student": 
-                return ok("Student tu zatím nic nemá.");
+                return ok(choose.render(Application.loggedUser));
+                //return ok("Student tu zatím nic nemá.");
             case "teacher": 
                 return ok("Učitel tu zatím nic nemá.");
             default:
@@ -43,6 +44,12 @@ public class OtherController extends Controller{
         if(Application.loggedUser.userRole.equals("admin"))
         return ok(showAll.render(User.find.all(), Application.loggedUser));
         else return ok("Přístupné pouze adminovi.");
+    }
+    
+    public static Result editPassword(){
+        Form<User> prefilledForm=form(User.class).fill(Application.loggedUser);
+        
+        return ok(editPassword.render(prefilledForm,Application.loggedUser));
     }
     
     public static Result add() {       
@@ -63,6 +70,24 @@ public class OtherController extends Controller{
             return ok(createSummary.render(user, Application.loggedUser));
         }
         
+    }
+    
+    public static Result changePassword(){        
+        Form<User> filledForm = userForm.bindFromRequest();
+        
+        if(!filledForm.field("password").valueOr("").isEmpty()) {
+            if(!filledForm.field("password").valueOr("").equals(filledForm.field("repeatPassword").value())) {
+                filledForm.reject("repeatPassword", "Hesla nejsou stejná.");
+            }
+        }
+        
+        if(filledForm.hasErrors()) {
+            return badRequest(editPassword.render(filledForm, Application.loggedUser));
+        } else {
+            User user = filledForm.get();
+            user.update();
+            return ok(editPasswordSummary.render(user, Application.loggedUser));
+        }
     }
     
 }
