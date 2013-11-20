@@ -1,0 +1,26 @@
+@(users: List[User], loggedUser: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @title = {
+        Zobrazit všechny uživatele
+    }
+    
+    @main(title, nav = "other", user = loggedUser) {
+
+    <h3>Seznam studentů</h3>
+
+    @if(users.isEmpty){
+        <span>Žádný uživatel.</span>
+    } else {        
+        <ul>
+        @for(user <- users) {
+        @if(user.userRole=="student"){
+        
+            <li>@user.name</li>
+        }
+        }
+        </ul>
+
+}}
