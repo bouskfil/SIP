@@ -7,6 +7,7 @@
 package controllers;
 
 import models.User;
+import models.Student;
 import play.data.*;
 import play.mvc.*;
 import views.html.other.*;
@@ -28,7 +29,7 @@ public class OtherController extends Controller{
                 return ok(choose.render(Application.loggedUser));
                 //return ok("Student tu zatím nic nemá.");
             case "teacher": 
-                return ok("Učitel tu zatím nic nemá.");
+                return ok(choose.render(Application.loggedUser));
             default:
                 return ok("Neznámá uživatelská role.");           
         }
@@ -44,6 +45,11 @@ public class OtherController extends Controller{
         if(Application.loggedUser.userRole.equals("admin"))
         return ok(showAll.render(User.find.all(), Application.loggedUser));
         else return ok("Přístupné pouze adminovi.");
+    }
+    public static Result showAllStudents() {
+        if(Application.loggedUser.userRole.equals("teacher"))
+        return ok(showAllStudents.render(User.find.all(), Application.loggedUser));
+        else return ok("Přístupné pouze učiteli.");
     }
     
     public static Result editPassword(){
