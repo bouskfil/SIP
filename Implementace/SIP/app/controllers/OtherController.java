@@ -72,7 +72,7 @@ public class OtherController extends Controller{
         
     }
     
-    public static Result changePassword(){        
+    public static Result changePassword(String name,String email, String userRole){        
         Form<User> filledForm = userForm.bindFromRequest();
         
         if(!filledForm.field("password").valueOr("").isEmpty()) {
@@ -85,6 +85,9 @@ public class OtherController extends Controller{
             return badRequest(editPassword.render(filledForm, Application.loggedUser));
         } else {
             User user = filledForm.get();
+            user.name=name;
+            user.email=email;
+            user.userRole=userRole;
             user.update();
             return ok(editPasswordSummary.render(user, Application.loggedUser));
         }

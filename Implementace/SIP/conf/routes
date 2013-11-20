@@ -23,7 +23,7 @@ GET         /other                     controllers.OtherController.choose()
 GET         /other/create              controllers.OtherController.create()
 GET         /other/showAll             controllers.OtherController.showAll()
 GET         /other/editPassword        controllers.OtherController.editPassword()
-POST        /other/editPassword        controllers.OtherController.changePassword()
+POST        /other/editPassword        controllers.OtherController.changePassword(name: String, email: String, userRole: String)
 POST        /other/create              controllers.OtherController.add()
 
 
