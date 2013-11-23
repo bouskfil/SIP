@@ -22,14 +22,14 @@ public class OtherController extends Controller{
     final static Form<User> userForm = form(User.class);
 
     public static Result choose() {
-        switch(Application.loggedUser.userRole){
+        switch(User.find.byId(session("email")).userRole){
             case "admin": 
-                return ok(choose.render(Application.loggedUser));
+                return ok(choose.render(User.find.byId(session("email"))));
             case "student": 
-                return ok(choose.render(Application.loggedUser));
+                return ok(choose.render(User.find.byId(session("email"))));
                 //return ok("Student tu zatím nic nemá.");
             case "teacher": 
-                return ok(choose.render(Application.loggedUser));
+                return ok(choose.render(User.find.byId(session("email"))));
             default:
                 return ok("Neznámá uživatelská role.");           
         }
@@ -37,25 +37,25 @@ public class OtherController extends Controller{
     }
     
     public static Result create() {
-        if(Application.loggedUser.userRole.equals("admin"))
-        return ok(create.render(userForm, Application.loggedUser));
+        if(User.find.byId(session("email")).userRole.equals("admin"))
+        return ok(create.render(userForm, User.find.byId(session("email"))));
         else return ok("Přístupné pouze adminovi.");
     }
     public static Result showAll() {
-        if(Application.loggedUser.userRole.equals("admin"))
-        return ok(showAll.render(User.find.all(), Application.loggedUser));
+        if(User.find.byId(session("email")).userRole.equals("admin"))
+        return ok(showAll.render(User.find.all(), User.find.byId(session("email"))));
         else return ok("Přístupné pouze adminovi.");
     }
     public static Result showAllStudents() {
-        if(Application.loggedUser.userRole.equals("teacher"))
-        return ok(showAllStudents.render(User.find.all(), Application.loggedUser));
+        if(User.find.byId(session("email")).userRole.equals("teacher"))
+        return ok(showAllStudents.render(User.find.all(), User.find.byId(session("email"))));
         else return ok("Přístupné pouze učiteli.");
     }
     
     public static Result editPassword(){
-        Form<User> prefilledForm=form(User.class).fill(Application.loggedUser);
+        Form<User> prefilledForm=form(User.class).fill(User.find.byId(session("email")));
         
-        return ok(editPassword.render(prefilledForm,Application.loggedUser));
+        return ok(editPassword.render(prefilledForm,User.find.byId(session("email"))));
     }
     
     public static Result add() {       
@@ -69,11 +69,11 @@ public class OtherController extends Controller{
         }        
         
         if(filledForm.hasErrors()) {
-            return badRequest(create.render(filledForm, Application.loggedUser));
+            return badRequest(create.render(filledForm, User.find.byId(session("email"))));
         } else {
             User user = filledForm.get();
             user.save();
-            return ok(createSummary.render(user, Application.loggedUser));
+            return ok(createSummary.render(user, User.find.byId(session("email"))));
         }
         
     }
@@ -88,14 +88,14 @@ public class OtherController extends Controller{
         }
         
         if(filledForm.hasErrors()) {
-            return badRequest(editPassword.render(filledForm, Application.loggedUser));
+            return badRequest(editPassword.render(filledForm, User.find.byId(session("email"))));
         } else {
             User user = filledForm.get();
             user.name=name;
             user.email=email;
             user.userRole=userRole;
             user.update();
-            return ok(editPasswordSummary.render(user, Application.loggedUser));
+            return ok(editPasswordSummary.render(user, User.find.byId(session("email"))));
         }
     }
     

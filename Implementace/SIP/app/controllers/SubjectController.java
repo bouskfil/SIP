@@ -19,11 +19,11 @@ public class SubjectController extends Controller {
     final static Form<Subject> formSubject = form(Subject.class);
 
     public static Result blank() {
-        return ok(list.render(Subject.find.all(), Application.loggedUser));
+        return ok(list.render(Subject.find.all(), User.find.byId(session("email"))));
     }
 
     public static Result create(){
-        return ok(form.render(formSubject, Application.loggedUser));
+        return ok(form.render(formSubject, User.find.byId(session("email"))));
     }
 
     public static Result add() {
@@ -40,7 +40,7 @@ public class SubjectController extends Controller {
     public static Result edit(Long id) {
         Subject existingSubject = Subject.find.ref(id);
         Form<Subject> prefilledForm = form(Subject.class).fill(existingSubject);
-        return ok(edit.render(prefilledForm, Application.loggedUser));
+        return ok(edit.render(prefilledForm, User.find.byId(session("email"))));
     }
 
     public static Result save(Long id) {

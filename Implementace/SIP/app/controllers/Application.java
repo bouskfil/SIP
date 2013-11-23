@@ -17,12 +17,10 @@ import views.html.*;
 
 public class Application extends Controller {
     
-    public static User loggedUser;
-
+    
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        loggedUser=User.find.byId(request().username());
-        return ok(index.render(loggedUser)); 
+        return ok(index.render(User.find.byId(session("email")))); 
     }
 
     public static Result login() {
