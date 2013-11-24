@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
@@ -21,10 +22,48 @@ import java.util.List;
 public class Exam extends Model {
 
     @Id
-    private Long id;
+    public Long id;
 
-    private Date date;
+    @Constraints.Required
+    public String subjectCode;
+    @Constraints.Required
+    public Date date;
+    @Constraints.Required
+    public String room;
+    @Constraints.Required
+    public String examiner;
 
     @ManyToMany
-    private List<Student> students = new ArrayList<Student>();
+    public List<Student> students = new ArrayList<Student>();
+
+    public static Finder<Long, Exam> find = new Finder(Long.class, Exam.class);
+
+    public static void create(Exam exam){
+        exam.save();
+    }
+
+    public static void delete(Long id) {
+        find.ref(id).delete();
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
+
+    public boolean isAdded(Student student) {
+        return students.contains(student);
+    }
+
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }

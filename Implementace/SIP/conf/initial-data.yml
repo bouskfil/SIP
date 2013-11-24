@@ -47,11 +47,34 @@
 - &admin !!models.User
   email:      admin@admin.com
   name:       admin
+  lastName:   admin
   password:   admin
   userRole:   admin
   
 - &student !!models.User
   email:      student@student.com
   name:       student
+  lastName:   student
   password:   student
   userRole:   student
+  
+- &teacher !!models.User
+  email:      teacher@teacher.com
+  name:       teacher
+  lastName:   teacher
+  password:   teacher
+  userRole:   teacher
+
+# Exams
+
+- &zk1     !!models.Exam
+  subjectCode: MAT123
+  date:        2014-01-12
+  room:        KNE212
+  examiner:    Jan Novák
+
+- &zk2     !!models.Exam
+  subjectCode: CZE1332
+  date:        2014-01-25
+  room:        KNE101
+  examiner:    Lucie Rychlá

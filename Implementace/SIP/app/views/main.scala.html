@@ -27,7 +27,7 @@
                             <a href="#">Studijní výsledky</a>
                         </li>
                         <li class="@("active".when(nav == "exam"))">
-                            <a href="#">Zápočty a zkoušky</a>
+                            <a href="@routes.ExamController.blank">Zápočty a zkoušky</a>
                         </li>
                         <li class="@("active".when(nav == "homework"))">
                             <a href="#">Domácí úkoly</a>
@@ -40,7 +40,7 @@
                         </li>
                     </ul>
                         <li>
-                            <dt>@user.name <span>(@user.email)</span></dt>
+                            <dt><span>(@user.getEmail())</span></dt>
                         </li>
                 </div>
             </div>

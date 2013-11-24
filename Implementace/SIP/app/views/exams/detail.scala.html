@@ -1,0 +1,27 @@
+@(exam: Exam, user: User)
+
+    @title = {
+        Byli jste přihlášení na zkoušku:
+    }
+
+@main(title, nav = "exam", user) {
+    <div>
+        <ul>
+            <h3>Předmět:</h3>
+            <li>@exam.subjectCode</li><br>
+
+            <h3>Datum:</h3>
+            <li>@exam.date</li><br>
+
+            <h3>Místnost:</h3>
+            <li>@exam.room</li><br>
+
+            <h3>Zkoušející:</h3>
+            <li>@exam.examiner</li><br>
+
+        <div class="actions">
+            <a href="@routes.ExamController.blank" class="btn primary">Zpět</a>
+        </div>
+    </div>
+    <br>
+}

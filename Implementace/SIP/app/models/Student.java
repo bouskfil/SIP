@@ -40,6 +40,12 @@ public class Student extends Model {
     private List<Exam> exams = new ArrayList<Exam>();
 
     public static Finder<Long, Student> find = new Finder(Long.class, Student.class);
+    
+    public Student(String name, String lastname, String email){
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+    }
 
     public static void create(Student student){
         student.save();
