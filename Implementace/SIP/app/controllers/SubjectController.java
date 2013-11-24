@@ -7,6 +7,7 @@ package controllers;
  * Time: 22:25
  */
 
+import com.google.common.primitives.Longs;
 import models.*;
 import play.data.*;
 import play.mvc.*;
@@ -53,6 +54,12 @@ public class SubjectController extends Controller {
         return ok(detail.render(Subject.find.byId(id), User.find.byId(session("email"))));
     }
 
+    public static Result enrol(Long id) {
+        return ok(enrol.render(Subject.find.byId(id), User.find.byId(session("email"))));
+    }
+    public static Result enrolList() {
+        return ok(enrolList.render(User.find.byId(session("email"))));
+    }
 
 
 }
