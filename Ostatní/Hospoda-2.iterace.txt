@@ -1,0 +1,6 @@
+﻿ADM - menu obsahuje jídlo, nebo jidlo obsahuje menu?
+BPM Stornování objednávky - pri rozdeleni se muze duhy token tocit ve smysce, prvni bude stale cekat na potvrzeni
+BPM zaplacení - chybí popis ano/ne u decision
+Požadavky - šlo by trochu víc rozšířit
+Chybí scénaře užití (jsou v projektu ale ne v dokumentaci)
+Chybí mapování use case - požadavky

@@ -2,9 +2,14 @@
 @title = {
         Ostatní
     }
-@main(title,nav = "OtherController", user = user) {
+@main(title,nav = "other", user = user) {
 
-<p><h2><a href="@routes.OtherController.create">Přidat uživatele</a></h2></p>
-<p><h2><a href="@routes.OtherController.showAll">Zobrazit všechny uživatele</a></h2></p>
-
+@if(user.userRole.equals("admin")){
+    <p><h2><a href="@routes.OtherController.create">Přidat uživatele</a></h2></p>
+    <p><h2><a href="@routes.OtherController.showAll">Zobrazit všechny uživatele</a></h2></p>
+}
+@if(user.userRole.equals("teacher")){
+    <p><h2><a href="@routes.OtherController.showAllStudents">Zobrazit studenty</a></h2></p>
+}
+<p><h2><a href="@routes.OtherController.editPassword">Změnit heslo</a></h2></p>
 }

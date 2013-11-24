@@ -23,6 +23,7 @@ public class Subject extends Model{
 
     @Id
     public Long id;
+    public List<Student> studentList;
 
     @Constraints.Required
     public String name;

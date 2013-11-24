@@ -11,7 +11,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import play.data.validation.Constraints.*;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import javax.validation.*;
 import javax.persistence.CascadeType;
@@ -21,27 +21,35 @@ import java.util.List;
 
 @Entity
 public class User extends Model {
-    
-    public interface All{}
-    public interface Step1{}
-
+        
     @Id
-    @Required(groups = {All.class, Step1.class})
-    @Email(groups = {All.class, Step1.class})
+    @Constraints.Required
+    @Constraints.Email
     public String email;
     
-    @Required(groups = {All.class, Step1.class})
+    @Constraints.Required
     public String name;
     
-    @Required(groups = {All.class, Step1.class})
-    @MinLength(value = 6, groups = {All.class, Step1.class})
+    @Constraints.Required
+    @Constraints.MinLength(value = 6)
     public String password;
+    
+    @Constraints.Required
+    public String userRole;    
+   
 
     public User(String email, String name, String password) {
         this.email = email;
         this.name = name;
         this.password = password;
     }
+    public User(String email, String name, String password, String userRole) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.userRole = userRole;
+    }
+    
 
     public static Finder<String,User> find = new Finder<String,User>(
             String.class, User.class
@@ -54,5 +62,13 @@ public class User extends Model {
     public static User authenticate(String email, String password) {
         return find.where().eq("email", email)
                 .eq("password", password).findUnique();
+    }
+    public static List<String> getUserRoles(){
+        List <String> list=new ArrayList<String>();
+        list.add("admin");
+        list.add("student");
+        list.add("teacher");
+        
+        return list;
     }
 }

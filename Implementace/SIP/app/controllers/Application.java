@@ -17,12 +17,10 @@ import views.html.*;
 
 public class Application extends Controller {
     
-    public static User loggedUser;
-
+    
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        loggedUser=User.find.byId(request().username());
-        return ok(index.render(loggedUser)); 
+        return ok(index.render(User.find.byId(session("email")))); 
     }
 
     public static Result login() {
@@ -57,7 +55,7 @@ public class Application extends Controller {
 
         public String validate() {
             if (User.authenticate(email, password) == null) {
-                return "Špatné uživatelské jméno nebo heslo. (zkuste: admin@admin.com a heslo: admin)";
+                return "Špatné uživatelské jméno nebo heslo. (zkuste: admin@admin.com a heslo: admin nebo student@student.com a heslo: student)";
             }
             return null;
         }

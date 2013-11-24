@@ -7,7 +7,7 @@
 @title = {
         Vytvořit nového uživatele
     }
-@main(title,nav = "OtherController", user = user) {
+@main(title,nav = "other", user = user) {
 
 @helper.form(action = routes.OtherController.add) {
 
@@ -25,6 +25,13 @@
                 userForm("email"),
                 '_label -> "Zadejte email",
                 '_help -> "Zadejte email."
+            )
+            @select(
+                userForm("userRole"),
+                options = options(User.getUserRoles),
+                '_default -> "--- Vyberte uživatelskou roli ---",
+                '_label -> "Uživatelská role",
+                '_help -> "Vyberte uživatelskou roli pro vytvářeného uživatele."
             )
             @inputPassword(
                 userForm("password"),
