@@ -19,26 +19,29 @@
                 subjectForm("name"),
                 '_label -> "Název předmětu",
                 '_help -> "Zadejte jméno předmětu.",
-                '_error -> subjectForm.globalError
+                '_error -> subjectForm.error("name")
             )
 
             @inputText(
-                subjectForm("katedra"),
+                subjectForm("department"),
                 '_label -> "Katedra",
-                '_help -> "Zadejte katedru."
+                '_help -> "Zadejte katedru.",
+                '_error -> subjectForm.error("department")
             )
 
             @select(
-                subjectForm("garant"),
+                subjectForm("guarantor"),
                 options = options(Teacher.getAllNames),
                 '_default -> "--- Vyberte garanta ---",
                 '_label -> "Garant",
-                '_help -> "Vyberte garanta."
+                '_help -> "Vyberte garanta.",
+                '_error -> subjectForm.error("department")
             )
             @textarea(
                 subjectForm("information"),
                 '_label -> "Informace",
-                '_help -> "Zadejte informace o předmětu."
+                '_help -> "Zadejte informace o předmětu.",
+                '_error -> subjectForm.error("department")
             )
 
 

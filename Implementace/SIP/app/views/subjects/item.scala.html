@@ -4,12 +4,12 @@
     <div>
         <span style="font-size: 15px"><a class="name" href="@routes.SubjectController.detail(subject.id)">@subject.name</a> - @subject.getCode()</span><br>
 
-        @if(user.getUserRole().equals("admin")){
+        @if(user.getUserRole.equals("admin")){
             @helper.form(action = routes.SubjectController.edit(subject.id)) {
                 <input class="btn" type="submit" value="Upravit">
             }
         }
-        @if(user.userRole.equals("student")){
+        @if(user.getUserRole.equals("student")){
             @helper.form(action = routes.SubjectController.enrol(subject.id)) {
                 <input class="btn" type="submit" value="Zapsat">
                 }

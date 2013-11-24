@@ -2476,5 +2476,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 }
 .my{
-background: rgba(0, 0, 0, 0.29);
+    list-style-type: none;
+    padding-top: 1em;
+    color: #0069d6;
 }
