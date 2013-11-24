@@ -15,6 +15,8 @@ POST        /subject/edited/:id           controllers.SubjectController.save(id:
 POST        /subject/edit/:id             controllers.SubjectController.edit(id: Long)
 POST        /subject/delete/:id           controllers.SubjectController.delete(id: Long)
 GET         /subject/delete/:id           controllers.SubjectController.delete(id: Long)
+GET         /subject/enrol/:id            controllers.SubjectController.enrol(id: Long)
+GET         /subject/enrolList/           controllers.SubjectController.enrolList()
 GET         /subject/detail/:id           controllers.SubjectController.detail(id: Long)
 GET         /subject                      controllers.SubjectController.blank()
 GET         /subject/create               controllers.SubjectController.create()

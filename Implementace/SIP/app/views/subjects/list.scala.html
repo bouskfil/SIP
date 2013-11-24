@@ -4,15 +4,18 @@
 @import helper.twitterBootstrap._
 
     @title = {
+
         Předměty
         @if(loggedUser.getUserRole().equals("admin")) {
+
             <small><a href="@routes.SubjectController.create">přidat předmět</a></small>
+        }
+        @if(loggedUser.getUserRole().equals("student")) {
+            <small><a href="@routes.SubjectController.enrolList">zobrazit zapsané předměty</a></small>
         }
     }
 
 @main(title, nav = "subject", user = loggedUser) {
-
-    <h3>Seznam předmětů</h3>
 
     <ul>
         @subjects.map { subject =>

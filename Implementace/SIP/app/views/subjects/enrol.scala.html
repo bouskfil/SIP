@@ -1,0 +1,17 @@
+@(subject: Subject, loggedUser: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @title = {
+        Předmět v pořádku zapsán
+    }
+
+@main(title, nav = "subject", user = loggedUser) {
+
+    <h3>Zapsali jste se do předmětu: @subject.name: @subject.getCode()</h3>
+
+    <div class="actions">
+        <a href="@routes.SubjectController.blank" class="btn primary">Zpět</a>
+    </div>
+}
