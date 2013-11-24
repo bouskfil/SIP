@@ -12,17 +12,10 @@
     <h3>Seznam předmětů</h3>
 
     <ul id="SubjectController">
-    @subjects.groupBy(_.katedra).map {
-        case (subject, subjects) => {
-            @views.html.subjects.group(subject, subjects)
-        }
-    }
         <ul>
         @subjects.map { subject =>
             @views.html.subjects.item(subject)
         }
         </ul>
     </ul>
-
-
 }
