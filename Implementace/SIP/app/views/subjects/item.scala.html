@@ -1,36 +1,14 @@
-@(subject: Subject)
+@(subject: Subject, user: User)
 
 <li data-project="@subject.id">
-    <div style="border: solid; padding: 20px">
-    <a class="name" href="#">@subject.name</a>
-    @helper.form(action = routes.SubjectController.delete(subject.id)) {
-        <input class="btn" type="submit" value="Smazat">
-    }
-    @helper.form(action = routes.SubjectController.edit(subject.id)) {
-        <input class="btn" type="submit" value="Upravit">
-    }
+    <div>
+        <a class="name" href="@routes.SubjectController.detail(subject.id)">@subject.name</a> - @subject.getCode()<br>
 
-    @if(subject.garant != null){
-        Garant:
-        <ul>
-            <li>@subject.garant</li>
-        </ul>
-    }  else {
-        předmět nemá garanta<br>
-    }
-
-    @if(subject.teachers.isEmpty){
-        <span>předmět nemá žádné učitele</span>
-    } else {
-        Učitelé:
-        <ul>
-        @for(teacher <- subject.teachers) {
-            <li>@teacher.name</li>
+        @if(user.userRole.equals("admin")){
+            @helper.form(action = routes.SubjectController.edit(subject.id)) {
+                <input class="btn" type="submit" value="Upravit">
+            }
         }
-        </ul>
-    }
     </div>
     <br>
-
-
 </li>

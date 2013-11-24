@@ -1,4 +1,4 @@
-@(group: String, subjects: List[Subject])
+@(group: String, subjects: List[Subject], user: User)
 
 <li data-group="@group">
     <span class="toggle"></span>
@@ -12,7 +12,7 @@
     </dl>
     <ul>
     @subjects.map { subject =>
-        @views.html.subjects.item(subject)
+        @views.html.subjects.item(subject, user)
     }
     </ul>
 

@@ -60,4 +60,11 @@ public class Subject extends Model{
         oldSubject.update();
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

@@ -7,7 +7,7 @@
         Přidat předmět
     }
 
-@main(title, nav = "signup", user = loggedUser) {
+@main(title, nav = "subject", user = loggedUser) {
 
     @helper.form(action = routes.SubjectController.save(subjectForm.get.id)) {
 
@@ -43,7 +43,9 @@
 
         <div class="actions">
             <input type="submit" class="btn primary" value="Upravit">
+            <a href="@routes.SubjectController.delete(subjectForm.get.id)" class="btn primary">Smazat</a>
             <a href="@routes.SubjectController.blank" class="btn">Zrušit</a>
+
         </div>
 
     }
