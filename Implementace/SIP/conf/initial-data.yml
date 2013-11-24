@@ -23,6 +23,7 @@
 - &matematika !!models.Subject
   name:       Matematika
   katedra:    Katedra Matematiky
+  code:       MAT123
   teachers:
       - *novak
       - *rychla
@@ -30,6 +31,7 @@
 - &cestina !!models.Subject
   name:       Čeština
   katedra:    Katedra Jazyků
+  code:       CZE1332
   teachers:
       - *novak
       - *hruby
@@ -38,6 +40,7 @@
 - &anglictina !!models.Subject
   name:       Angličtina
   katedra:    Katedra Jazyků
+  code:       ANG22SD
   teachers:
 
 # Users

@@ -1,0 +1,39 @@
+@(subject: Subject, user: User)
+
+    @title = {
+        @subject.name <small>kód: @subject.getCode()</small>
+    }
+
+@main(title, nav = "subject", user) {
+    <div>
+        <ul>
+        <h3>Katedra:</h3>
+        <li>@subject.katedra</li><br>
+        <h3>Informace o předmětu:</h3>
+        <li>@subject.information</li><br>
+        <h3>Garant:</h3>
+
+        @if(subject.garant == null){
+            <li>Předmět nemá garanta.</li><br>
+        }  else {
+            <li>@subject.garant</li>
+        }
+
+        <h3>Učitelé:</h3>
+        @if(subject.teachers.isEmpty){
+            <li>Předmět nemá žádné učitele.</li>
+        } else {
+
+            @for(teacher <- subject.teachers) {
+                <li>@teacher.name</li>
+            }
+            <br>
+        }
+        </ul>
+
+        <div class="actions">
+            <a href="@routes.SubjectController.blank" class="btn primary">Zpět</a>
+        </div>
+    </div>
+    <br>
+}

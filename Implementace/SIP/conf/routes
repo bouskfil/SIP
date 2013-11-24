@@ -3,31 +3,33 @@
 # ~~~~
 
 # Home page
-GET         /                          controllers.Application.index()
-GET         /login                     controllers.Application.login()
-GET         /logout                    controllers.Application.logout()
-POST        /login                     controllers.Application.authenticate()
+GET         /                             controllers.Application.index()
+GET         /login                        controllers.Application.login()
+GET         /logout                       controllers.Application.logout()
+POST        /login                        controllers.Application.authenticate()
 
 # Subject
 
-POST        /subject/create            controllers.SubjectController.add()
-POST        /subject/edited/:id        controllers.SubjectController.save(id: Long)
-POST        /subject/edit/:id          controllers.SubjectController.edit(id: Long)
-POST        /subject/delete/:id        controllers.SubjectController.delete(id: Long)
-GET         /subject                   controllers.SubjectController.blank()
-GET         /subject/create            controllers.SubjectController.create()
+POST        /subject/create               controllers.SubjectController.add()
+POST        /subject/edited/:id           controllers.SubjectController.save(id: Long)
+POST        /subject/edit/:id             controllers.SubjectController.edit(id: Long)
+POST        /subject/delete/:id           controllers.SubjectController.delete(id: Long)
+GET         /subject/delete/:id           controllers.SubjectController.delete(id: Long)
+GET         /subject/detail/:id           controllers.SubjectController.detail(id: Long)
+GET         /subject                      controllers.SubjectController.blank()
+GET         /subject/create               controllers.SubjectController.create()
 
 #Other
 
-GET         /other                     controllers.OtherController.choose()
-GET         /other/create              controllers.OtherController.create()
-GET         /other/showAll             controllers.OtherController.showAll()
-GET         /other/showAllStudents     controllers.OtherController.showAllStudents()
-GET         /other/editPassword        controllers.OtherController.editPassword()
-POST        /other/editPassword        controllers.OtherController.changePassword(name: String, email: String, userRole: String)
-POST        /other/create              controllers.OtherController.add()
+GET         /other                        controllers.OtherController.choose()
+GET         /other/create                 controllers.OtherController.create()
+GET         /other/showAll                controllers.OtherController.showAll()
+GET         /other/showAllStudents        controllers.OtherController.showAllStudents()
+GET         /other/editPassword           controllers.OtherController.editPassword()
+POST        /other/editPassword           controllers.OtherController.changePassword(name: String, email: String, userRole: String)
+POST        /other/create                 controllers.OtherController.add()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file              controllers.Assets.at(path="/public", file)
+GET         /assets/*file                 controllers.Assets.at(path="/public", file)
 

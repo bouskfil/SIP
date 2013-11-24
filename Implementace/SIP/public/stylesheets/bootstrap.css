@@ -923,7 +923,6 @@ textarea[readonly] {
   margin-top: 18px;
   margin-bottom: 18px;
   padding: 17px 20px 18px 150px;
-  border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
@@ -2370,7 +2369,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 6px;
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.29);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
 .popover .title {
@@ -2475,4 +2474,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     margin-left: auto;
     margin-right: auto
 
+}
+.my{
+background: rgba(0, 0, 0, 0.29);
 }

@@ -17,7 +17,7 @@
                 <div class="container">
                     <a class="brand" href="@routes.Application.index">ŠIP</a>
                     <ul class="nav">
-                        <li class="@("active".when(nav == "SubjectController"))">
+                        <li class="@("active".when(nav == "subject"))">
                             <a href="@routes.SubjectController.blank">Předměty</a>
                         </li>
                         <li class="@("active".when(nav == "schedule"))">
@@ -37,9 +37,10 @@
                         </li>
                         <li class="@("active".when(nav == "signout"))">                        
                             <a href="@routes.Application.logout">Odhlásit se</a>
-                        </li>                        
+                        </li>
                     </ul>
-                        <li><dt>@user.name <span>(@user.email)</span></dt>
+                        <li>
+                            <dt>@user.name <span>(@user.email)</span></dt>
                         </li>
                 </div>
             </div>

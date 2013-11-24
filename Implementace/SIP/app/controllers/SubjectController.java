@@ -49,6 +49,10 @@ public class SubjectController extends Controller {
         return redirect(routes.SubjectController.blank());
     }
 
+    public static Result detail(Long id) {
+        return ok(detail.render(Subject.find.byId(id), User.find.byId(session("email"))));
+    }
+
 
 
 }
