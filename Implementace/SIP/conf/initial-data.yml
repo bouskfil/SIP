@@ -47,11 +47,20 @@
 - &admin !!models.User
   email:      admin@admin.com
   name:       admin
+  lastName:   admin
   password:   admin
   userRole:   admin
   
 - &student !!models.User
   email:      student@student.com
   name:       student
+  lastName:   student
   password:   student
   userRole:   student
+  
+- &teacher !!models.User
+  email:      teacher@teacher.com
+  name:       teacher
+  lastName:   teacher
+  password:   teacher
+  userRole:   teacher

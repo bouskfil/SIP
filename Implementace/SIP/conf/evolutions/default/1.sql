@@ -59,6 +59,7 @@ create table teacher (
 create table user (
   email                     varchar(255) not null,
   name                      varchar(255),
+  last_name                 varchar(255),
   password                  varchar(255),
   user_role                 varchar(255),
   constraint pk_user primary key (email))

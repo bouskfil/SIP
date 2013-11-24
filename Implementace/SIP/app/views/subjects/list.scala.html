@@ -5,7 +5,7 @@
 
     @title = {
         Předměty
-        @if(loggedUser.userRole.equals("admin")) {
+        @if(loggedUser.getUserRole().equals("admin")) {
             <small><a href="@routes.SubjectController.create">přidat předmět</a></small>
         }
     }

@@ -1,4 +1,4 @@
-@(users: List[User], loggedUser: User)
+@(students: List[Student], loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -11,15 +11,12 @@
 
     <h3>Seznam studentů</h3>
 
-    @if(users.isEmpty){
+    @if(students.isEmpty){
         <span>Žádný uživatel.</span>
     } else {        
         <ul>
-        @for(user <- users) {
-        @if(user.userRole=="student"){
-        
-            <li>@user.name</li>
-        }
+        @for(user <- students) {
+            <li>@user.getName() @user.getLastname()</li>        
         }
         </ul>
 

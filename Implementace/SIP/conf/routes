@@ -26,7 +26,7 @@ GET         /other/create                 controllers.OtherController.create()
 GET         /other/showAll                controllers.OtherController.showAll()
 GET         /other/showAllStudents        controllers.OtherController.showAllStudents()
 GET         /other/editPassword           controllers.OtherController.editPassword()
-POST        /other/editPassword           controllers.OtherController.changePassword(name: String, email: String, userRole: String)
+POST        /other/editPassword           controllers.OtherController.changePassword(name: String, lastName: String, email: String, userRole: String)
 POST        /other/create                 controllers.OtherController.add()
 
 

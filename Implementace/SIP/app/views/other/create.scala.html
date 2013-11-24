@@ -17,7 +17,13 @@
             @inputText(
                 userForm("name"),
                 '_label -> "Jméno",
-                '_help -> "Zadejte jméno a příjmení.",
+                '_help -> "Zadejte jméno.",
+                '_error -> userForm.globalError
+            )
+            @inputText(
+                userForm("lastName"),
+                '_label -> "Příjmení",
+                '_help -> "Zadejte příjmení.",
                 '_error -> userForm.globalError
             )
 
