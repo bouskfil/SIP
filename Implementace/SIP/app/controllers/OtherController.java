@@ -81,12 +81,16 @@ public class OtherController extends Controller{
     public static Result changePassword(String name,String email, String userRole){        
         Form<User> filledForm = userForm.bindFromRequest();
         
-        if(!filledForm.field("password").valueOr("").isEmpty()) {
-            if(!filledForm.field("password").valueOr("").equals(filledForm.field("repeatPassword").value())) {
-                filledForm.reject("repeatPassword", "Hesla nejsou stejná.");
-            }
-        }
         
+        if(filledForm.field("oldPassword").value().equals(User.find.byId(session("email")).password)){
+            if(!filledForm.field("password").valueOr("").isEmpty()) {
+                if(!filledForm.field("password").valueOr("").equals(filledForm.field("repeatPassword").value())) {
+                    filledForm.reject("repeatPassword", "Hesla nejsou stejná.");
+                }
+            }
+        }else {
+            filledForm.reject("oldPassword", "Špatné heslo.");
+        }
         if(filledForm.hasErrors()) {
             return badRequest(editPassword.render(filledForm, User.find.byId(session("email"))));
         } else {
