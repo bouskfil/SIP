@@ -1,4 +1,4 @@
-@(users: List[User])
+@(users: List[User], loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -7,7 +7,7 @@
         Zobrazit všechny uživatele
     }
     
-    @main(title, nav = "OtherController") {
+    @main(title, nav = "OtherController", user = loggedUser) {
 
     <h3>Seznam uživatelů</h3>
 

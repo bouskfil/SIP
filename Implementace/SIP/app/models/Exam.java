@@ -27,7 +27,4 @@ public class Exam extends Model {
 
     @ManyToMany
     private List<Student> students = new ArrayList<Student>();
-
-
-
 }

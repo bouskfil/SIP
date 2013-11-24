@@ -1,4 +1,4 @@
-@(userForm: Form[User])
+@(userForm: Form[User], user: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -7,7 +7,7 @@
 @title = {
         Vytvořit nového uživatele
     }
-@main(title,nav = "OtherController") {
+@main(title,nav = "OtherController", user = user) {
 
 @helper.form(action = routes.OtherController.add) {
 

@@ -16,10 +16,13 @@ import models.*;
 import views.html.*;
 
 public class Application extends Controller {
+    
+    public static User loggedUser;
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render());
+        loggedUser=User.find.byId(request().username());
+        return ok(index.render(loggedUser)); 
     }
 
     public static Result login() {
