@@ -13,7 +13,10 @@ create table address (
 
 create table exam (
   id                        bigint not null,
+  subject_code              varchar(255),
   date                      timestamp,
+  room                      varchar(255),
+  examiner                  varchar(255),
   constraint pk_exam primary key (id))
 ;
 

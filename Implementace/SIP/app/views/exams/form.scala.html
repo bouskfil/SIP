@@ -1,0 +1,25 @@
+@(examForm: Form[Exam], loggedUser: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+@import scala._
+
+    @title = {
+        Přidat zkoušku
+    }
+
+@main(title, nav = "exam", user = loggedUser) {
+
+    @helper.form(action = routes.ExamController.add) {
+
+        <fieldset>
+            <legend>Informace o zkoušce</legend>
+        </fieldset>
+
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Vytvořit">
+            <a href="@routes.ExamController.blank" class="btn">Zrušit</a>
+        </div>
+    }
+}

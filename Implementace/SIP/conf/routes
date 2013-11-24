@@ -29,6 +29,16 @@ GET         /other/editPassword           controllers.OtherController.editPasswo
 POST        /other/editPassword           controllers.OtherController.changePassword(name: String, lastName: String, email: String, userRole: String)
 POST        /other/create                 controllers.OtherController.add()
 
+# Exam
+
+POST        /exam/create                  controllers.ExamController.add()
+POST        /exam/delete/:id              controllers.ExamController.delete(id: Long)
+GET         /exam/delete/:id              controllers.ExamController.delete(id: Long)
+GET         /exam/detail/:id              controllers.ExamController.detail(id: Long)
+GET         /exam                         controllers.ExamController.blank()
+GET         /exam/create                  controllers.ExamController.create()
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                 controllers.Assets.at(path="/public", file)
