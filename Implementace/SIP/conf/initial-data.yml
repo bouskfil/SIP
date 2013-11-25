@@ -22,7 +22,7 @@
 
 - &matematika !!models.Subject
   name:       Matematika
-  katedra:    Katedra Matematiky
+  department:    Katedra Matematiky
   code:       MAT123
   teachers:
       - *novak
@@ -30,7 +30,7 @@
 
 - &cestina !!models.Subject
   name:       Čeština
-  katedra:    Katedra Jazyků
+  department:    Katedra Jazyků
   code:       CZE1332
   teachers:
       - *novak
@@ -39,7 +39,7 @@
 
 - &anglictina !!models.Subject
   name:       Angličtina
-  katedra:    Katedra Jazyků
+  department:    Katedra Jazyků
   code:       ANG22SD
   teachers:
 

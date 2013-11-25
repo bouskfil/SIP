@@ -1,4 +1,4 @@
-@(loggedUser: User)
+@(student: Student, loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -8,8 +8,20 @@
     }
 
 @main(title, nav = "subject", user = loggedUser) {
-
-    <ul>
-
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Název předmětu</th>
+                <th>Kód</th>
+            </tr>
+        </thead>
+        <tbody>
+        @student.getSubjects.map { subject =>
+            @views.html.subjects.item(subject, loggedUser)
+        }
+        </tbody>
+    </table>
+    <div class="actions">
+        <a href="@routes.SubjectController.blank" class="btn primary">Zpět</a>
+    </div>
 }

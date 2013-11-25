@@ -39,9 +39,9 @@ create table student (
 create table subject (
   id                        bigint not null,
   name                      varchar(255),
-  katedra                   varchar(255),
+  department                varchar(255),
   information               varchar(255),
-  garant                    varchar(255),
+  guarantor                 varchar(255),
   code                      varchar(255),
   constraint pk_subject primary key (id))
 ;

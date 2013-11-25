@@ -4,13 +4,11 @@
 @import helper.twitterBootstrap._
 
     @title = {
-        Předmět v pořádku zapsán
+        Seznam zapsaných předmětů předmětů
     }
 
 @main(title, nav = "subject", user = loggedUser) {
-
-    <h3>Zapsali jste se do předmětu: @subject.getName: @subject.getCode()</h3>
-
+   <h3>Předmět "@subject.getName - @subject.getCode" nelze zapsat, jelikož ho už máte zapsaný!</h3>
     <div class="actions">
         <a href="@routes.SubjectController.blank" class="btn primary">Zpět</a>
     </div>

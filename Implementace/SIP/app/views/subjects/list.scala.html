@@ -16,10 +16,18 @@
     }
 
 @main(title, nav = "subject", user = loggedUser) {
-
-    <ul>
+    <h3>Seznam všech předmětů</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Název předmětu</th>
+                <th>Kód</th>
+            </tr>
+        </thead>
+        <tbody>
         @subjects.map { subject =>
             @views.html.subjects.item(subject, loggedUser)
         }
-    </ul>
+        </tbody>
+    </table>
 }
