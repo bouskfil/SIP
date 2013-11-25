@@ -25,6 +25,7 @@ public class Student extends Model {
     @Constraints.Required
     private String lastname;
     @Constraints.Required
+    @Constraints.Unique
     private String email;
 
     @OneToOne
@@ -53,6 +54,10 @@ public class Student extends Model {
 
     public static void delete(Long id){
         find.ref(id).delete();
+    }
+
+    public void addSubject(Subject s){
+        this.subjects.add(s);
     }
 
     //<editor-fold desc="getters and setters">

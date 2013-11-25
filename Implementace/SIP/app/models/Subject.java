@@ -22,26 +22,33 @@ import java.util.List;
 public class Subject extends Model{
 
     @Id
-    public Long id;
-    public List<Student> studentList;
+    private Long id;
+    private List<Student> studentList;
 
     @Constraints.Required
-    public String name;
+    private String name;
     @Constraints.Required
-    public String katedra;
+    private String department;
     @Constraints.Required
-    public String information;
+    private String information;
     @Constraints.Required
-    public String garant;
-
+    private String guarantor;
     @Constraints.Required
     private String code;
 
 
     @ManyToMany(cascade = CascadeType.REMOVE)
-    public List<Teacher> teachers = new ArrayList<Teacher>();
+    private List<Teacher> teachers = new ArrayList<Teacher>();
 
     public static Finder<Long, Subject> find = new Finder(Long.class, Subject.class);
+
+    public Subject(String name, String code, String department, String guarantor, String information) {
+        this.name = name;
+        this.department = department;
+        this.information = information;
+        this.guarantor = guarantor;
+        this.code = code;
+    }
 
     public static void create(Subject subject){
         subject.save();
@@ -54,8 +61,8 @@ public class Subject extends Model{
     public void copySubject(Long id){
         Subject oldSubject = Subject.find.byId(id);
         oldSubject.name = this.name;
-        oldSubject.katedra = this.katedra;
-        oldSubject.garant = this.garant;
+        oldSubject.department = this.department;
+        oldSubject.guarantor = this.guarantor;
         oldSubject.information = this.information;
         oldSubject.update();
     }
@@ -66,5 +73,61 @@ public class Subject extends Model{
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
+    public String getGuarantor() {
+        return guarantor;
+    }
+
+    public void setGuarantor(String guarantor) {
+        this.guarantor = guarantor;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }

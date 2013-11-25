@@ -12,6 +12,9 @@ import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.subjects.*;
+
+import java.util.List;
+
 import static play.data.Form.*;
 
 @Security.Authenticated(Secured.class)
@@ -19,8 +22,10 @@ public class SubjectController extends Controller {
 
     final static Form<Subject> formSubject = form(Subject.class);
 
+
     public static Result blank() {
-        return ok(list.render(Subject.find.all(), User.find.byId(session("email"))));
+        List<Subject> subjects = Subject.find.where().orderBy("name asc").findList();
+        return ok(list.render(subjects, User.find.byId(session("email"))));
     }
 
     public static Result create(){
@@ -28,9 +33,15 @@ public class SubjectController extends Controller {
     }
 
     public static Result add() {
-        Subject subject = Form.form(Subject.class).bindFromRequest().get();
-        subject.save();
-        return redirect(routes.SubjectController.blank());
+        Form<Subject> filledForm = formSubject.bindFromRequest();
+
+        if(filledForm.hasErrors()) {
+            return badRequest(form.render(filledForm, User.find.byId(session("email"))));
+        } else {
+            Subject subject = filledForm.get();
+            subject.save();
+            return redirect(routes.SubjectController.blank());
+            }
     }
 
     public static Result delete(Long id) {
@@ -45,9 +56,16 @@ public class SubjectController extends Controller {
     }
 
     public static Result save(Long id) {
-        Subject subject = Form.form(Subject.class).bindFromRequest().get();
-        subject.copySubject(id);
-        return redirect(routes.SubjectController.blank());
+        Form<Subject> filledForm = formSubject.bindFromRequest();
+
+        if(filledForm.hasErrors()) {
+            return redirect(routes.SubjectController.edit(id));
+        } else {
+            Subject subject = filledForm.get();
+
+            subject.copySubject(id);
+            return redirect(routes.SubjectController.blank());
+        }
     }
 
     public static Result detail(Long id) {
@@ -55,11 +73,26 @@ public class SubjectController extends Controller {
     }
 
     public static Result enrol(Long id) {
-        return ok(enrol.render(Subject.find.byId(id), User.find.byId(session("email"))));
+        User u = User.find.byId(session("email"));
+        List<Student> studlist = Student.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
+        Student stud = studlist.get(0);
+        Subject sub = Subject.find.byId(id);
+        if(stud.getSubjects().contains(sub)){
+            return ok(error.render(sub, User.find.byId(session("email"))));
+        } else  {
+            stud.addSubject(sub);
+            stud.update();
+            return ok(enrol.render(Subject.find.byId(id), User.find.byId(session("email"))));
+        }
     }
+
     public static Result enrolList() {
-        return ok(enrolList.render(User.find.byId(session("email"))));
+        User u = User.find.byId(session("email"));
+        List<Student> studlist = Student.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
+        Student stud = studlist.get(0);
+        return ok(enrolList.render(stud, User.find.byId(session("email"))));
     }
+
 
 
 }

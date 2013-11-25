@@ -18,15 +18,19 @@
             @inputText(
                 subjectForm("name"),
                 '_label -> "Název předmětu",
-                '_help -> "Zadejte jméno předmětu.",
-                '_error -> subjectForm.error("name")
+                '_help -> "Zadejte jméno předmětu."
+
+            )
+            @inputText(
+                subjectForm("code"),
+                '_label -> "Kód předmětu",
+                '_help -> "Zadejte kód předmětu."
             )
 
             @inputText(
                 subjectForm("department"),
                 '_label -> "Katedra",
-                '_help -> "Zadejte katedru.",
-                '_error -> subjectForm.error("department")
+                '_help -> "Zadejte katedru."
             )
 
             @select(
@@ -34,20 +38,15 @@
                 options = options(Teacher.getAllNames),
                 '_default -> "--- Vyberte garanta ---",
                 '_label -> "Garant",
-                '_help -> "Vyberte garanta.",
-                '_error -> subjectForm.error("department")
+                '_help -> "Vyberte garanta."
             )
+
             @textarea(
                 subjectForm("information"),
                 '_label -> "Informace",
-                '_help -> "Zadejte informace o předmětu.",
-                '_error -> subjectForm.error("department")
+                '_help -> "Zadejte informace o předmětu."
             )
-
-
-
         </fieldset>
-
 
         <div class="actions">
             <input type="submit" class="btn primary" value="Vytvořit">

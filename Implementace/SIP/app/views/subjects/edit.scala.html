@@ -9,7 +9,7 @@
 
 @main(title, nav = "subject", user = loggedUser) {
 
-    @helper.form(action = routes.SubjectController.save(subjectForm.get.id)) {
+    @helper.form(action = routes.SubjectController.save(subjectForm.get.getId)) {
 
         <fieldset>
             <legend>Informace o předmětu</legend>
@@ -22,13 +22,19 @@
             )
 
             @inputText(
-                subjectForm("katedra"),
+                subjectForm("code"),
+                '_label -> "Kód předmětu",
+                '_help -> "Zadejte kód předmětu."
+            )
+
+            @inputText(
+                subjectForm("department"),
                 '_label -> "Katedra",
                 '_help -> "Zadejte katedru."
             )
 
             @select(
-                subjectForm("garant"),
+                subjectForm("guarantor"),
                 options = options(Teacher.getAllNames),
                 '_default -> "--- Vyberte garanta ---",
                 '_label -> "Garant",
@@ -39,11 +45,12 @@
                 '_label -> "Informace",
                 '_help -> "Zadejte informace o předmětu."
             )
+
         </fieldset>
 
         <div class="actions">
             <input type="submit" class="btn primary" value="Upravit">
-            <a href="@routes.SubjectController.delete(subjectForm.get.id)" class="btn primary">Smazat</a>
+            <a href="@routes.SubjectController.delete(subjectForm.get.getId)" class="btn primary">Smazat</a>
             <a href="@routes.SubjectController.blank" class="btn">Zrušit</a>
 
         </div>
