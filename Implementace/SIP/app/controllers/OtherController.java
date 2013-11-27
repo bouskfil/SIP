@@ -32,8 +32,7 @@ public class OtherController extends Controller{
                 return ok(choose.render(User.find.byId(session("email"))));
             default:
                 return ok("Neznámá uživatelská role.");           
-        }
-        
+        }        
     }
     
     public static Result create() {

@@ -25,7 +25,6 @@ public class Student extends Model {
     @Constraints.Required
     private String lastname;
     @Constraints.Required
-    @Constraints.Unique
     private String email;
 
     @OneToOne

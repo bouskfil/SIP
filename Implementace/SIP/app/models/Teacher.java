@@ -45,6 +45,6 @@ public class Teacher extends Model{
         }
         return names;
     }
-
+    
 
 }

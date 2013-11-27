@@ -1,0 +1,9 @@
+@(user: User)
+@title = {
+        Domácí úkoly
+    }
+@main(title,nav = "homework", user = user) {
+    
+
+    @user.getUserRole()
+}
