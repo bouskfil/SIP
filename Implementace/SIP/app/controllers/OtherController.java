@@ -6,8 +6,7 @@
 
 package controllers;
 
-import models.User;
-import models.Student;
+import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.other.*;
@@ -75,8 +74,12 @@ public class OtherController extends Controller{
             
             switch(user.getUserRole()){
                 case "student":
-                    Student newStudent =new Student(user.getName(), user.getLastName(), user.getEmail());
+                    Student newStudent = new Student(user.getName(), user.getLastName(), user.getEmail());
                     newStudent.save();
+                    break;
+                case "teacher":
+                    Teacher newTeacher = new Teacher(user.getName(), user.getLastName(), user.getEmail());
+                    newTeacher.save();
                     break;
             }
             

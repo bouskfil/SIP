@@ -1,9 +1,22 @@
-@(user: User)
+@(user: User,student: Student, teacher: Teacher)
 @title = {
         Domácí úkoly
     }
 @main(title,nav = "homework", user = user) {
     
-
-    @user.getUserRole()
+    @if(user.getUserRole().equals("teacher")){
+    <table>
+        <thead>
+            <tr>
+                <th>Název předmětu</th>
+                <th>Kód</th>
+            </tr>
+        </thead>
+        <tbody>
+        @teacher.getSubjects.map { subject =>
+            @views.html.homeworks.itemSubject(subject, user)
+        }
+        </tbody>
+    </table>
+    }
 }

@@ -56,6 +56,8 @@ create table task (
 create table teacher (
   id                        bigint not null,
   name                      varchar(255),
+  lastname                  varchar(255),
+  email                     varchar(255),
   constraint pk_teacher primary key (id))
 ;
 
@@ -110,6 +112,12 @@ create table task_student (
   student_id                     bigint not null,
   constraint pk_task_student primary key (task_id, student_id))
 ;
+
+create table teacher_subject (
+  teacher_id                     bigint not null,
+  subject_id                     bigint not null,
+  constraint pk_teacher_subject primary key (teacher_id, subject_id))
+;
 create sequence address_seq;
 
 create sequence exam_seq;
@@ -163,6 +171,10 @@ alter table task_student add constraint fk_task_student_task_01 foreign key (tas
 
 alter table task_student add constraint fk_task_student_student_02 foreign key (student_id) references student (id) on delete restrict on update restrict;
 
+alter table teacher_subject add constraint fk_teacher_subject_teacher_01 foreign key (teacher_id) references teacher (id) on delete restrict on update restrict;
+
+alter table teacher_subject add constraint fk_teacher_subject_subject_02 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
+
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
@@ -194,6 +206,8 @@ drop table if exists task;
 drop table if exists task_student;
 
 drop table if exists teacher;
+
+drop table if exists teacher_subject;
 
 drop table if exists user;
 
