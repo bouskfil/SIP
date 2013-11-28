@@ -1,0 +1,25 @@
+@(homework: Homework, loggedUser: User)
+
+@main(Html("Úkol vytvořen"), nav = "homework", user = loggedUser) {
+    
+    
+    <h6>Předmět</h6>
+    <p>
+        @homework.getSubjectCode
+    </p>
+    
+    <h6>Název úkolu</h6>
+    <p>
+        @homework.getName
+    </p>
+    
+    <h6>Datum uzavření</h6>
+    <p>
+        @homework.getDeadline
+    </p>
+    
+    <h6>Zadání</h6>
+    <p>
+        @homework.getDescription
+    </p>
+}

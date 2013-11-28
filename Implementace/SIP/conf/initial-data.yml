@@ -1,7 +1,17 @@
+- &anglictina !!models.Subject
+  name:       Angličtina
+  department:    Katedra Jazyků
+  code:       ANG22SD
+  teachers:
+
 # Teachers
 
 - &novak !!models.Teacher
-  name: Jan Novák
+  name: Jan
+  lastname: Novák
+  email: teacher@teacher.com
+  subjects:
+      - *anglictina
 
 - &svoboda !!models.Teacher
   name:       Tomáš Svoboda
@@ -37,11 +47,7 @@
       - *hruby
       - *skokava
 
-- &anglictina !!models.Subject
-  name:       Angličtina
-  department:    Katedra Jazyků
-  code:       ANG22SD
-  teachers:
+
 
 # Users
 - &admin !!models.User
@@ -53,15 +59,15 @@
   
 - &student !!models.User
   email:      student@student.com
-  name:       student
-  lastName:   student
+  name:       Petr
+  lastName:   Rychlý
   password:   student
   userRole:   student
   
 - &teacher !!models.User
   email:      teacher@teacher.com
-  name:       teacher
-  lastName:   teacher
+  name:       Jan
+  lastName:   Novak
   password:   teacher
   userRole:   teacher
 
@@ -78,3 +84,12 @@
   date:        2014-01-25
   room:        KNE101
   examiner:    Lucie Rychlá
+
+#Student
+
+- &rychly !!models.Student
+  name: Petr
+  lastname: Rychlý
+  email: student@student.com
+  subjects:
+      - *anglictina

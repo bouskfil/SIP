@@ -1,0 +1,49 @@
+@(homeForm: Form[Homework], user: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+@import scala._
+
+@title = {
+        Zadat úkol
+    }
+@main(title,nav = "homework", user = user) {
+
+    @helper.form(action = routes.HomeworksController.add) {
+
+        <fieldset>
+
+            @inputText(
+                homeForm("subjectCode"),
+                '_label -> "Kód předmětu",
+                '_help -> "Kód předmětu.",
+                '_error -> homeForm.globalError
+            )
+            @inputText(
+                homeForm("name"),
+                '_label -> "Název úkolu",
+                '_help -> "Zadejte titulek úkolu.",
+                '_error -> homeForm.globalError
+            )
+
+            @inputDate(
+                homeForm("deadline"),
+                '_label -> "Termín ukončení",
+                '_help -> "Zadejte datum uzavření úkolu."
+            )
+            @textarea(
+                homeForm("description"),
+                '_label -> "Zadání",
+                '_help -> "Zadejte zadání úkolu."
+            )
+
+        </fieldset>
+
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Vytvořit úkol">
+            <a href="@routes.HomeworksController.blank" class="btn">Zrušit</a>
+        </div>
+
+    }
+}

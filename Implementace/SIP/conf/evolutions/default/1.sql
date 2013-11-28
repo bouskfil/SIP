@@ -20,6 +20,15 @@ create table exam (
   constraint pk_exam primary key (id))
 ;
 
+create table homework (
+  id                        bigint not null,
+  subject_code              varchar(255),
+  name                      varchar(255),
+  deadline                  timestamp,
+  description               varchar(255),
+  constraint pk_homework primary key (id))
+;
+
 create table schedule (
   id                        bigint not null,
   student_id                bigint,
@@ -122,6 +131,8 @@ create sequence address_seq;
 
 create sequence exam_seq;
 
+create sequence homework_seq;
+
 create sequence schedule_seq;
 
 create sequence student_seq;
@@ -185,6 +196,8 @@ drop table if exists exam;
 
 drop table if exists exam_student;
 
+drop table if exists homework;
+
 drop table if exists schedule;
 
 drop table if exists schedule_subject;
@@ -216,6 +229,8 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists address_seq;
 
 drop sequence if exists exam_seq;
+
+drop sequence if exists homework_seq;
 
 drop sequence if exists schedule_seq;
 
