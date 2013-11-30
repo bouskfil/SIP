@@ -73,9 +73,7 @@ public class SubjectController extends Controller {
     }
 
     public static Result enrol(Long id) {
-        User u = User.find.byId(session("email"));
-        List<Student> studlist = Student.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
-        Student stud = studlist.get(0);
+        Student stud = User.getStudent();
         Subject sub = Subject.find.byId(id);
         if(stud.getSubjects().contains(sub)){
             return ok(error.render(sub, User.find.byId(session("email"))));
@@ -85,6 +83,7 @@ public class SubjectController extends Controller {
             return ok(enrol.render(Subject.find.byId(id), User.find.byId(session("email"))));
         }
     }
+
 
     public static Result enrolList() {
         User u = User.find.byId(session("email"));

@@ -40,6 +40,9 @@
             }
             @if(user.getUserRole.equals("student")){
                 @helper.form(action = routes.SubjectController.enrol(subject.getId)) {
+                    @if(User.getStudent.getSubjects.contains(subject)){
+                        <input class="btn primary" type="submit" value="Zrušit zapsání">
+                    }
                     <input class="btn primary" type="submit" value="Zapsat">
                     <a href="@routes.SubjectController.blank" class="btn">Zpět</a>
                     }

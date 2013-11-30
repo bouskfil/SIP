@@ -19,13 +19,13 @@ public class Student extends Model {
 
     @Id
     private long id;
-
     @Constraints.Required
     private String name;
     @Constraints.Required
     private String lastname;
     @Constraints.Required
     private String email;
+
 
     @OneToOne
     private Schedule schedule;
