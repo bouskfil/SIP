@@ -23,8 +23,8 @@ public class Subject extends Model{
 
     @Id
     private Long id;
-    private List<Student> studentList;
-
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Student> studentList = new ArrayList<Student>();
     @Constraints.Required
     private String name;
     @Constraints.Required

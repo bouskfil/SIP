@@ -10,6 +10,8 @@ import models.*;
 import play.data.*;
 import play.mvc.*;
 import views.html.other.*;
+import java.util.List;
+import java.util.ArrayList;
 import static play.data.Form.*;
 /**
  *
@@ -45,8 +47,17 @@ public class OtherController extends Controller{
         else return ok("Přístupné pouze adminovi.");
     }
     public static Result showAllStudents() {
-        if(User.find.byId(session("email")).getUserRole().equals("teacher"))
-        return ok(showAllStudents.render(Student.find.all(), User.find.byId(session("email"))));
+        if(User.find.byId(session("email")).getUserRole().equals("teacher")){
+            Teacher t = User.getTeacher();
+            List<Subject> subj = t.getSubjects();
+            List<Student> stud = new ArrayList<Student>();
+            for (Subject s : subj){
+                if(s.getStudentList()!= null){
+                    stud.addAll(s.getStudentList()); 
+                }
+            }
+        return ok(showAllStudents.render(stud, User.find.byId(session("email"))));
+        }
         else return ok("Přístupné pouze učiteli.");
     }
     

@@ -1,8 +1,15 @@
+# Student
+- &mrkev !!models.Student
+  name: Jan
+  lastname: Mrkev
+  email: student@sip.com
+      
 - &anglictina !!models.Subject
   name:       Angličtina
   department:    Katedra Jazyků
   code:       ANG22SD
-  teachers:
+  studentList:
+      - *mrkev
 
 # Teachers
 
@@ -37,6 +44,7 @@
   teachers:
       - *novak
       - *rychla
+ 
 
 - &cestina !!models.Subject
   name:       Čeština
@@ -63,6 +71,7 @@
   lastName:   Rychlý
   password:   student
   userRole:   student
+  
   
 - &teacher !!models.User
   email:      teacher@teacher.com
@@ -93,3 +102,5 @@
   email: student@student.com
   subjects:
       - *anglictina
+      - *matematika
+      

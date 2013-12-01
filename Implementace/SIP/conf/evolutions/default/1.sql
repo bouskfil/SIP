@@ -110,6 +110,12 @@ create table student_exam (
   constraint pk_student_exam primary key (student_id, exam_id))
 ;
 
+create table subject_student (
+  subject_id                     bigint not null,
+  student_id                     bigint not null,
+  constraint pk_subject_student primary key (subject_id, student_id))
+;
+
 create table subject_teacher (
   subject_id                     bigint not null,
   teacher_id                     bigint not null,
@@ -174,6 +180,10 @@ alter table student_exam add constraint fk_student_exam_student_01 foreign key (
 
 alter table student_exam add constraint fk_student_exam_exam_02 foreign key (exam_id) references exam (id) on delete restrict on update restrict;
 
+alter table subject_student add constraint fk_subject_student_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
+
+alter table subject_student add constraint fk_subject_student_student_02 foreign key (student_id) references student (id) on delete restrict on update restrict;
+
 alter table subject_teacher add constraint fk_subject_teacher_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
 
 alter table subject_teacher add constraint fk_subject_teacher_teacher_02 foreign key (teacher_id) references teacher (id) on delete restrict on update restrict;
@@ -211,6 +221,8 @@ drop table if exists student_task;
 drop table if exists student_exam;
 
 drop table if exists subject;
+
+drop table if exists subject_student;
 
 drop table if exists subject_teacher;
 

@@ -61,6 +61,15 @@ public class User extends Model {
             return null;
         }
     }
+    public static Teacher getTeacher(){
+        User u = User.find.byId(session("email"));
+        List<Teacher> teachlist = Teacher.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
+        if(!teachlist.isEmpty()){
+            return teachlist.get(0);
+        }else{
+            return null;
+        }
+    }
     
     public String getEmail(){
         return email;
