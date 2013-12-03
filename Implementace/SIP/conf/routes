@@ -45,7 +45,9 @@ GET         /exam/create                  controllers.ExamController.create()
 
 GET         /homeworks                    controllers.HomeworksController.blank()
 GET         /homeworks/create/:id         controllers.HomeworksController.create(id: Long)
-POST        /homeworks/create             controllers.HomeworksController.add()
+GET         /homeworks/listHomeworks/:id  controllers.HomeworksController.listHomeworks(id: Long)
+GET         /homeworks/work/:id           controllers.HomeworksController.work(id: Long)
+POST        /homeworks/create             controllers.HomeworksController.add(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -39,6 +39,9 @@ public class Subject extends Model{
 
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Teacher> teachers = new ArrayList<Teacher>();
+    
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Homework> homeworks = new ArrayList<Homework>();
 
     public static Finder<Long, Subject> find = new Finder(Long.class, Subject.class);
 
@@ -129,5 +132,17 @@ public class Subject extends Model{
 
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
+    }
+    
+    public List<Homework> getHomeworks() {
+        return homeworks;
+    }
+
+    public void setHomeworks(List<Homework> homeworks) {
+        this.homeworks = homeworks;
+    }
+    
+    public void addHomework(Homework homework) {
+        this.homeworks.add(homework);
     }
 }

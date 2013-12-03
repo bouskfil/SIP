@@ -45,20 +45,35 @@ public class HomeworksController extends Controller {
             Homework home = new Homework();
             home.setSubjectCode(sub.getCode());
             Form<Homework> prefilledForm = form(Homework.class).fill(home);
-            return ok(addHomework.render(prefilledForm,User.find.byId(session("email"))));
+            return ok(addHomework.render(prefilledForm,User.find.byId(session("email")), id));
         }else
             return ok("Přístupné pouze učiteli.");
     }
     
-    public static Result add(){
+    public static Result add(Long id){
         Form<Homework> filledForm = homeworkForm.bindFromRequest();   
         
         if(filledForm.hasErrors()) {
-            return badRequest(addHomework.render(filledForm, User.find.byId(session("email"))));
+            return badRequest(addHomework.render(filledForm, User.find.byId(session("email")), id));
         }else{
             Homework newHomework = filledForm.get();
             newHomework.save();
+            Subject sub = Subject.find.byId(id);
+            sub.addHomework(newHomework);
+            sub.update();
             return ok(newHomeworkSummary.render(newHomework,User.find.byId(session("email"))));
         }
+    }
+    
+    public static Result listHomeworks(Long id){
+        Subject sub = Subject.find.byId(id);
+        
+        return ok(homeworkList.render(User.find.byId(session("email")), sub));
+    }
+    
+    public static Result work(Long id){
+        Homework homework = Homework.find.byId(id);
+        
+        return ok(itemHomework.render(User.find.byId(session("email")),homework));
     }
 }
