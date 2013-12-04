@@ -10,9 +10,17 @@
             <span>Žádný úkol.</span>
         } else {        
             <ul>
-            @for(homework <- sub.getHomeworks()) {
-                <li><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.work(homework.getId)">@homework.getName</a></span></li>
+            @for(homework <- sub.getHomeworks()) {                
+                <li><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.work(homework.getId)">@homework.getName</a></span></li>                
             }
             </ul>
+        <div class="actions">
+            @if(user.getUserRole.equals("teacher")){
+                @helper.form(action = routes.HomeworksController.create(sub.getCode)) {
+                    <input class="btn primary" type="submit" value="Zadat úkol">
+                    <a href="@routes.HomeworksController.blank" class="btn">Zpět</a>
+                }
+            }
+        </div>
     }    
 }

@@ -15,6 +15,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashMap; 
 
 @Entity
 public class Homework extends Model{
@@ -33,6 +34,8 @@ public class Homework extends Model{
     
     @Constraints.Required
     private String description;
+    
+    private HashMap<Student, String> submittedHomeworks = new HashMap<Student, String>();
     
     public static Finder<Long, Homework> find = new Finder(Long.class, Homework.class);
     
@@ -77,5 +80,11 @@ public class Homework extends Model{
     }
     public String getDescription(){
         return this.description;
+    }
+    public void setSubmittedHomeworks(HashMap<Student, String> submittedHomeworks){
+        this.submittedHomeworks = submittedHomeworks;
+    }
+    public HashMap<Student, String> getSubmittedHomeworks(){
+        return this.submittedHomeworks;
     }
 }

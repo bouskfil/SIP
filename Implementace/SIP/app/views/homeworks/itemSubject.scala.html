@@ -1,12 +1,7 @@
 @(subject: Subject, user: User)
 <div  data-project="@subject.getId">
-    <tr>
-        @if(user.getUserRole().equals("teacher")){
-            <td><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.create(subject.getCode)">@subject.getName</a></span></td>
-        }
-        @if(user.getUserRole().equals("student")){
-            <td><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.listHomeworks(subject.getId)">@subject.getName</a></span></td>
-        }
-        <td>@subject.getCode</td>
+    <tr>        
+         <td><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.listHomeworks(subject.getId)">@subject.getName</a></span></td>
+         <td>@subject.getCode</td>
     </tr>
 </div>

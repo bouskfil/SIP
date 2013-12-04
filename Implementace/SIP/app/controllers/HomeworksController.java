@@ -76,4 +76,12 @@ public class HomeworksController extends Controller {
         
         return ok(itemHomework.render(User.find.byId(session("email")),homework));
     }
+    
+    public static Result seeSubmitted(Long id){
+        Homework homework = Homework.find.byId(id);
+        
+        return ok(submitted.render(User.find.byId(session("email")),homework));
+    }
+    
+    
 }

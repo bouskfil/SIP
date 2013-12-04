@@ -47,6 +47,7 @@ GET         /homeworks                    controllers.HomeworksController.blank(
 GET         /homeworks/create/:subjectCode   controllers.HomeworksController.create(subjectCode: String)
 GET         /homeworks/listHomeworks/:id  controllers.HomeworksController.listHomeworks(id: Long)
 GET         /homeworks/work/:id           controllers.HomeworksController.work(id: Long)
+GET         /homeworks/submitted/:id      controllers.HomeworksController.seeSubmitted(id: Long)
 POST        /homeworks/create             controllers.HomeworksController.add()
 
 
