@@ -1,4 +1,4 @@
-@(homeForm: Form[Homework], user: User, id: Long)
+@(homeForm: Form[Homework], user: User)
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -9,7 +9,7 @@
     }
 @main(title,nav = "homework", user = user) {
 
-    @helper.form(action = routes.HomeworksController.add(id)) {
+    @helper.form(action = routes.HomeworksController.add()) {
 
         <fieldset>
 

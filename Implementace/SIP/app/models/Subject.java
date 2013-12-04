@@ -69,6 +69,14 @@ public class Subject extends Model{
         oldSubject.information = this.information;
         oldSubject.update();
     }
+    public static Subject findByCode(String code){
+        List<Subject> sublist = Subject.find.where().ilike("code", "%"+code+"%").findList();
+        if(!sublist.isEmpty()){
+            return sublist.get(0);
+        }else{
+            return null;
+        }
+    }
 
     public String getCode() {
         return code;
