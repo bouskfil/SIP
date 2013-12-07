@@ -94,6 +94,12 @@
   room:        KNE101
   examiner:    Lucie Rychlá
 
+- &zk3     !!models.Exam
+  subjectCode: MAT123
+  date:        2014-01-28
+  room:        KNE212
+  examiner:    Jan Novák
+
 #Student
 
 - &rychly !!models.Student
@@ -103,4 +109,7 @@
   subjects:
       - *anglictina
       - *matematika
+      - *cestina
+  exams:
+      - *zk1
       
