@@ -24,19 +24,25 @@ public class ExamController extends Controller {
 
     public static Result blank() {
         User user = User.find.byId(session("email"));
+        switch (user.getUserRole()) {
+            case "student":
+                List<Student> studList = Student.find.where().ilike("email", "%"+user.getEmail()+"%").findList();
+                Student stud = studList.get(0);               // current student
+                List<Subject> subjList = stud.getSubjects();  // the list of student's subjects
+                List<Exam> exList = new ArrayList<>();      // list of exams from student's subjects
 
-        if (user.getUserRole().equals("student")) {
-          List<Student> studList = Student.find.where().ilike("email", "%"+user.getEmail()+"%").findList();
-          Student stud = studList.get(0);               // current student
-          List<Subject> subjList = stud.getSubjects();  // the list of student's subjects
-          List<Exam> examList = new ArrayList<>();                          // list of exams from student's subjects
+                for (Subject subj: subjList) {
+                    exList.addAll(Exam.find.where().ilike("subjectCode", "%"+subj.getCode()+"%").findList());
+                }
+                return ok(studentList.render(exList, stud, user));
+            case "teacher":
+                List<Teacher> teachList = Teacher.find.where().ilike("email", "%"+user.getEmail()+"%").findList();
+                Teacher teacher = teachList.get(0);
+                return ok(teacherList.render(Exam.find.all(), teacher, user));
+            default:
+                return ok("Tato stránka je určena pouze pro učitele nebo studenty.");
 
-          for (Subject subj: subjList) {
-            examList.addAll(Exam.find.where().ilike("subjectCode", "%"+subj.getCode()+"%").findList());
-          }
-          return ok(studentList.render(examList, stud, user));
         }
-        return ok(list.render(Exam.find.all(), User.find.byId(session("email"))));
     }
 
 
@@ -45,16 +51,26 @@ public class ExamController extends Controller {
     }
 
 
+    public static Result save(Long id) {
+        Form<Exam> filledForm = formExam.bindFromRequest();
+
+        if(filledForm.hasErrors()) {
+            return redirect(routes.ExamController.edit(id));
+        }
+        else {
+            Exam exam = filledForm.get();
+            exam.copyExam(id);
+            return redirect(routes.ExamController.blank());
+        }
+    }
+
+
     public static Result enrol(Long id) {
         Student stud = User.getStudent();
         Exam exam = Exam.find.byId(id);
-//        if (stud.getExams().contains(exam)) {
-//        }
-//        else {
-            stud.addExam(exam);
-            stud.update();
-            return ok(enrol.render(exam, User.find.byId(session("email"))));
-//        }
+        stud.addExam(exam);
+        stud.update();
+        return ok(enrol.render(exam, User.find.byId(session("email"))));
     }
 
 
@@ -67,15 +83,29 @@ public class ExamController extends Controller {
     }
 
     public static Result add() {
-        Exam exam = Form.form(Exam.class).bindFromRequest().get();
-        exam.save();
-        return redirect(routes.ExamController.blank());
+        Form<Exam> filledForm = formExam.bindFromRequest();
+
+        if (filledForm.hasErrors()) {
+            return badRequest(form.render(filledForm, User.find.byId(session("email"))));
+        }
+        else {
+            Exam exam = filledForm.get();
+            exam.save();
+            return redirect(routes.ExamController.blank());
+        }
     }
 
 
     public static Result delete(Long id) {
         Exam.delete(id);
         return redirect(routes.ExamController.blank());
+    }
+
+
+    public static Result edit(Long id) {
+        Exam existingExam = Exam.find.ref(id);
+        Form<Exam> prefilledForm = form(Exam.class).fill(existingExam);
+        return ok(edit.render(prefilledForm, User.find.byId(session("email"))));
     }
 
 

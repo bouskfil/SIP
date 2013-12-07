@@ -22,25 +22,35 @@ import java.util.List;
 public class Exam extends Model {
 
     @Id
-    public Long id;
+    private Long id;
 
     @Constraints.Required
-    public String subjectCode;
+    private String subjectCode;
     @Constraints.Required
-    public Date date;
+    private Date date;
     @Constraints.Required
-    public String room;
+    private String room;
     @Constraints.Required
-    public String examiner;
+    private String examiner;
 
     @ManyToMany
-    public List<Student> students = new ArrayList<Student>();
+    private List<Student> students = new ArrayList<Student>();
 
     public static Finder<Long, Exam> find = new Finder(Long.class, Exam.class);
 
     public static void create(Exam exam){
         exam.save();
     }
+
+    public void copyExam(Long id){
+        Exam oldExam = Exam.find.byId(id);
+        oldExam.subjectCode = this.subjectCode;
+        oldExam.date = this.date;
+        oldExam.room = this.room;
+        oldExam.examiner = this.examiner;
+        oldExam.update();
+    }
+
 
     public static void delete(Long id) {
         find.ref(id).delete();
@@ -61,6 +71,20 @@ public class Exam extends Model {
     public boolean isAdded(Student student) {
         return students.contains(student);
     }
+
+    public static List<Exam> all(){
+        return find.all();
+    }
+
+    public static List<String> getAllCodes(){
+        List<String> codes = new ArrayList();
+        for(Exam e : all()) {
+            if (!(codes.contains(e.subjectCode)))
+                codes.add(e.subjectCode);
+        }
+        return codes;
+    }
+
 
 
     public List<Student> getStudents() {

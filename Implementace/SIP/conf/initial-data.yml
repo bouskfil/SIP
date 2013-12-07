@@ -84,13 +84,13 @@
 
 - &zk1     !!models.Exam
   subjectCode: MAT123
-  date:        2014-01-12
+  date:        2014-01-10
   room:        KNE212
   examiner:    Jan Novák
 
 - &zk2     !!models.Exam
   subjectCode: CZE1332
-  date:        2014-01-25
+  date:        2014-01-23
   room:        KNE101
   examiner:    Lucie Rychlá
 

@@ -1,11 +1,13 @@
-@(exams: List[Exam], stud: Student, loggedUser: User)
+@(exams: List[Exam], teacher: Teacher, loggedUser: User)
 
 @import helper._
 @import helper.twitterBootstrap._
 
     @title = {
         Zkoušky
+        <small><a href="@routes.ExamController.create">přidat termín</a></small>
     }
+
 
 @main(title, nav = "exam", user = loggedUser) {
 
@@ -16,7 +18,10 @@
 
         <tbody>
         @exams.map { exam =>
-            @views.html.exams.studentItem(exam, stud)
+            <tr data-project="@exam.getId">
+            @views.html.exams.teacherItem(exam, teacher)
+            </tr>
+
         }
         </tbody>
     </table>

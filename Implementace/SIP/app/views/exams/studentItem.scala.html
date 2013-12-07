@@ -1,9 +1,9 @@
-@(exam: Exam, stud: Student, user: User)
+@(exam: Exam, stud: Student)
 
-<tr data-project="@exam.id">
+<tr data-project="@exam.getId">
 
     @if(stud.getExams().contains(exam)) {
-        <th> <a class="name" href="@routes.ExamController.cancel(exam.id)">Odhlásit</a>
+        <th> <a class="name" href="@routes.ExamController.cancel(exam.getId)">Odhlásit</a>
         </th>
     }
     @if(!(stud.getExams().contains(exam))) {
@@ -11,8 +11,5 @@
         </th>
     }
 
-    <td>@exam.subjectCode</td>
-    <td>@exam.date</td>
-    <td>@exam.room</td>
-    <td>@exam.examiner</td>
+    @views.html.exams.item(exam)
 </tr>

@@ -36,12 +36,16 @@ POST        /other/create                         controllers.OtherController.ad
 
 POST        /exam/create                          controllers.ExamController.add()
 POST        /exam/delete/:id                      controllers.ExamController.delete(id: Long)
+POST        /exam/edited/:id                      controllers.ExamController.save(id: Long)
+POST        /exam/edit/:id                        controllers.ExamController.edit(id: Long)
+GET         /exam/edit/:id                        controllers.ExamController.edit(id: Long)
 GET         /exam/delete/:id                      controllers.ExamController.delete(id: Long)
 GET         /exam/detail/:id                      controllers.ExamController.detail(id: Long)
 GET         /exam                                 controllers.ExamController.blank()
 GET         /exam/create                          controllers.ExamController.create()
 GET         /exam/enrol/:id                       controllers.ExamController.enrol(id: Long)
 GET         /exam/cancel/:id                      controllers.ExamController.cancel(id: Long)
+
 
 #Homeworks
 

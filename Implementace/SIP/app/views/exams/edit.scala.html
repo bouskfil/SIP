@@ -10,7 +10,7 @@
 
 @main(title, nav = "exam", user = loggedUser) {
 
-    @helper.form(action = routes.ExamController.add) {
+    @helper.form(action = routes.ExamController.save(examForm.get.getId)) {
 
         <fieldset>
             <legend>Informace o zkoušce</legend>
@@ -47,8 +47,10 @@
 
 
         <div class="actions">
-            <input type="submit" class="btn primary" value="Vytvořit">
+            <input type="submit" class="btn primary" value="Upravit">
+            <a href="@routes.ExamController.delete(examForm.get.getId)" class="btn primary">Smazat</a>
             <a href="@routes.ExamController.blank" class="btn">Zrušit</a>
+
         </div>
     }
 }
