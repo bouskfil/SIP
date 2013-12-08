@@ -84,15 +84,21 @@
 
 - &zk1     !!models.Exam
   subjectCode: MAT123
-  date:        2014-01-12
+  date:        10/01/2014 08:00
   room:        KNE212
   examiner:    Jan Novák
 
 - &zk2     !!models.Exam
   subjectCode: CZE1332
-  date:        2014-01-25
+  date:        23/01/2014 10:00
   room:        KNE101
   examiner:    Lucie Rychlá
+
+- &zk3     !!models.Exam
+  subjectCode: MAT123
+  date:        28/01/2014 09:30
+  room:        KNE212
+  examiner:    Jan Novák
 
 #Student
 
@@ -103,4 +109,5 @@
   subjects:
       - *anglictina
       - *matematika
+      - *cestina
       

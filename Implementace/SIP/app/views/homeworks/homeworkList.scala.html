@@ -1,0 +1,27 @@
+@(user: User, sub: Subject)
+@title = {
+        Domácí úkoly
+    }
+@main(title,nav = "homework", user = user) {
+    
+    <h3>@sub.getName()</h3>
+    
+    @if(sub.getHomeworks().isEmpty()){
+            <span>Žádný úkol.</span>
+        } else {        
+            <ul>
+            @for(homework <- sub.getHomeworks()) {                
+                <li><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.work(homework.getId)">@homework.getName</a></span></li>                
+            }
+            </ul>
+        }
+        
+    @if(user.getUserRole.equals("teacher")){
+        <div class="actions">
+        @helper.form(action = routes.HomeworksController.create(sub.getCode)) {
+            <input class="btn primary" type="submit" value="Zadat úkol">
+            <a href="@routes.HomeworksController.blank" class="btn">Zpět</a>
+        }
+        </div>
+    }
+}

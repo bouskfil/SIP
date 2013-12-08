@@ -9,7 +9,7 @@
     }
 @main(title,nav = "homework", user = user) {
 
-    @helper.form(action = routes.HomeworksController.add) {
+    @helper.form(action = routes.HomeworksController.add()) {
 
         <fieldset>
 
@@ -17,6 +17,7 @@
                 homeForm("subjectCode"),
                 '_label -> "Kód předmětu",
                 '_help -> "Kód předmětu.",
+                'readonly -> "readonly",
                 '_error -> homeForm.globalError
             )
             @inputText(

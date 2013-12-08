@@ -39,11 +39,10 @@ public class HomeworksController extends Controller {
         }
     }
     
-    public static Result create(Long id){
+    public static Result create(String code){
         if(User.find.byId(session("email")).getUserRole().equals("teacher")){
-            Subject sub = Subject.find.byId(id);
             Homework home = new Homework();
-            home.setSubjectCode(sub.getCode());
+            home.setSubjectCode(code);
             Form<Homework> prefilledForm = form(Homework.class).fill(home);
             return ok(addHomework.render(prefilledForm,User.find.byId(session("email"))));
         }else
@@ -51,14 +50,42 @@ public class HomeworksController extends Controller {
     }
     
     public static Result add(){
-        Form<Homework> filledForm = homeworkForm.bindFromRequest();   
+        Form<Homework> filledForm = homeworkForm.bindFromRequest();
+        List<Homework> homelist = Homework.find.where().ilike("name", "%"+filledForm.field("name").value()+"%").findList();
+        
+        if(!homelist.isEmpty()){
+            filledForm.reject("name", "Již existuje úkol s tímto názvem.");
+        }
         
         if(filledForm.hasErrors()) {
             return badRequest(addHomework.render(filledForm, User.find.byId(session("email"))));
         }else{
             Homework newHomework = filledForm.get();
             newHomework.save();
+            Subject sub = Subject.findByCode(newHomework.getSubjectCode());
+            sub.addHomework(newHomework);
+            sub.update();
             return ok(newHomeworkSummary.render(newHomework,User.find.byId(session("email"))));
         }
     }
+    
+    public static Result listHomeworks(Long id){
+        Subject sub = Subject.find.byId(id);
+        
+        return ok(homeworkList.render(User.find.byId(session("email")), sub));
+    }
+    
+    public static Result work(Long id){
+        Homework homework = Homework.find.byId(id);
+        
+        return ok(itemHomework.render(User.find.byId(session("email")),homework));
+    }
+    
+    public static Result seeSubmitted(Long id){
+        Homework homework = Homework.find.byId(id);
+        
+        return ok(submitted.render(User.find.byId(session("email")),homework));
+    }
+    
+    
 }

@@ -1,0 +1,15 @@
+@(homeForm: Form[Homework], user: User, homework: Homework)
+@title = {
+        Domácí úkoly
+    }
+@main(title,nav = "homework", user = user) {
+
+    <p><h3>Kód předmětu: </h3>@homework.getSubjectCode()</p>
+    <p><h3>Název úkolu: </h3>@homework.getName()</p>
+    <p><h3>Termín uzavření: </h3>@homework.getDeadline()</p>
+    <p><h3>Zadání úkolu: </h3>@homework.getDescription()</p>
+
+
+    
+
+}

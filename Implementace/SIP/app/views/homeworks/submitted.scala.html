@@ -1,0 +1,18 @@
+@(user: User, homework: Homework)
+@title = {
+        Domácí úkoly
+    }
+@main(title,nav = "homework", user = user) {
+    
+    
+
+    @if(homework.getSubmittedHomeworks().isEmpty()){
+            <span>Žádný odevzdaný úkol.</span>
+        } else {        
+            <ul>
+            @for((key,value) <- homework.getSubmittedHomeworks() ) {                
+                <li><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.blank">@key.getName @key.getLastname</a></span></li>                
+            }
+            </ul>
+    }
+}

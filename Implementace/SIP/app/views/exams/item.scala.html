@@ -1,12 +1,6 @@
-@(exam: Exam, user: User)
+@(exam: Exam)
 
-<tr data-project="@exam.id">
-    <th> @if(user.getUserRole().equals("student")) {
-            <a class="name" href="@routes.ExamController.detail(exam.id)">Přihlásit</a>
-         }
-    </th>
-    <td>@exam.subjectCode</td>
-    <td>@exam.date</td>
-    <td>@exam.room</td>
-    <td>@exam.examiner</td>
-</tr>
+<td>@exam.getSubjectCode</td>
+<td>@exam.getDate</td>
+<td>@exam.getRoom</td>
+<td>@exam.getExaminer</td>

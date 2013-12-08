@@ -14,7 +14,7 @@ create table address (
 create table exam (
   id                        bigint not null,
   subject_code              varchar(255),
-  date                      timestamp,
+  date                      varchar(255),
   room                      varchar(255),
   examiner                  varchar(255),
   constraint pk_exam primary key (id))
@@ -122,6 +122,12 @@ create table subject_teacher (
   constraint pk_subject_teacher primary key (subject_id, teacher_id))
 ;
 
+create table subject_homework (
+  subject_id                     bigint not null,
+  homework_id                    bigint not null,
+  constraint pk_subject_homework primary key (subject_id, homework_id))
+;
+
 create table task_student (
   task_id                        bigint not null,
   student_id                     bigint not null,
@@ -188,6 +194,10 @@ alter table subject_teacher add constraint fk_subject_teacher_subject_01 foreign
 
 alter table subject_teacher add constraint fk_subject_teacher_teacher_02 foreign key (teacher_id) references teacher (id) on delete restrict on update restrict;
 
+alter table subject_homework add constraint fk_subject_homework_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
+
+alter table subject_homework add constraint fk_subject_homework_homework_02 foreign key (homework_id) references homework (id) on delete restrict on update restrict;
+
 alter table task_student add constraint fk_task_student_task_01 foreign key (task_id) references task (id) on delete restrict on update restrict;
 
 alter table task_student add constraint fk_task_student_student_02 foreign key (student_id) references student (id) on delete restrict on update restrict;
@@ -225,6 +235,8 @@ drop table if exists subject;
 drop table if exists subject_student;
 
 drop table if exists subject_teacher;
+
+drop table if exists subject_homework;
 
 drop table if exists task;
 

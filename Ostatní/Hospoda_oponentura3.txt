@@ -1,0 +1,6 @@
+BDM - Menu/Jidlo - neni jasne co obsahuje co
+Stavový diagram - Objednávka a Úèet - v hranatých závorkách popisujících pøechody by mìla být podmínka, ne spouštìè akce.
+V analytickem modelu ma zamestnanec zapsanou smenu, v BDM neni jasne kdo ma co zapsane.
+BPM - Zaplacení - chybí Ano/Ne
+Požadavky - v legendì je should have i must have prakticky stejnou barvou
+Chybi instalacni a uživatelský manual

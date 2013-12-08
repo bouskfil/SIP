@@ -3,13 +3,14 @@
 # ~~~~
 
 # Home page
-GET         /                             controllers.Application.index()
-GET         /login                        controllers.Application.login()
-GET         /logout                       controllers.Application.logout()
-POST        /login                        controllers.Application.authenticate()
+GET         /                                     controllers.Application.index()
+GET         /login                                controllers.Application.login()
+GET         /logout                               controllers.Application.logout()
+POST        /login                                controllers.Application.authenticate()
 
 # Subject
 
+<<<<<<< HEAD
 GET         /subject/create               controllers.SubjectController.create()
 POST        /subject/add/                 controllers.SubjectController.add()
 POST        /subject/edited/:id           controllers.SubjectController.save(id: Long)
@@ -20,33 +21,55 @@ GET         /subject/enrolList/           controllers.SubjectController.enrolLis
 GET         /subject/leave/:id            controllers.SubjectController.leaveSubject(id: Long)
 GET         /subject/detail/:id           controllers.SubjectController.detail(id: Long)
 GET         /subject                      controllers.SubjectController.blank()
+=======
+POST        /subject/create                       controllers.SubjectController.add()
+POST        /subject/edited/:id                   controllers.SubjectController.save(id: Long)
+POST        /subject/edit/:id                     controllers.SubjectController.edit(id: Long)
+GET         /subject/edit/:id                     controllers.SubjectController.edit(id: Long)
+POST        /subject/delete/:id                   controllers.SubjectController.delete(id: Long)
+GET         /subject/delete/:id                   controllers.SubjectController.delete(id: Long)
+GET         /subject/enrol/:id                    controllers.SubjectController.enrol(id: Long)
+GET         /subject/enrolList/                   controllers.SubjectController.enrolList()
+GET         /subject/detail/:id                   controllers.SubjectController.detail(id: Long)
+GET         /subject                              controllers.SubjectController.blank()
+GET         /subject/create                       controllers.SubjectController.create()
+>>>>>>> 9231fa96b6657140f86329a9d3b44da7289818a3
 
 #Other
 
-GET         /other                        controllers.OtherController.choose()
-GET         /other/create                 controllers.OtherController.create()
-GET         /other/showAll                controllers.OtherController.showAll()
-GET         /other/showAllStudents        controllers.OtherController.showAllStudents()
-GET         /other/editPassword           controllers.OtherController.editPassword()
-POST        /other/editPassword           controllers.OtherController.changePassword(name: String, lastName: String, email: String, userRole: String)
-POST        /other/create                 controllers.OtherController.add()
+GET         /other                                controllers.OtherController.choose()
+GET         /other/create                         controllers.OtherController.create()
+GET         /other/showAll                        controllers.OtherController.showAll()
+GET         /other/showAllStudents                controllers.OtherController.showAllStudents()
+GET         /other/editPassword                   controllers.OtherController.editPassword()
+POST        /other/editPassword                   controllers.OtherController.changePassword(name: String, lastName: String, email: String, userRole: String)
+POST        /other/create                         controllers.OtherController.add()
 
-# Exam
+# Exams
 
-POST        /exam/create                  controllers.ExamController.add()
-POST        /exam/delete/:id              controllers.ExamController.delete(id: Long)
-GET         /exam/delete/:id              controllers.ExamController.delete(id: Long)
-GET         /exam/detail/:id              controllers.ExamController.detail(id: Long)
-GET         /exam                         controllers.ExamController.blank()
-GET         /exam/create                  controllers.ExamController.create()
+POST        /exam/create                          controllers.ExamController.add()
+POST        /exam/delete/:id                      controllers.ExamController.delete(id: Long)
+POST        /exam/edited/:id                      controllers.ExamController.save(id: Long)
+POST        /exam/edit/:id                        controllers.ExamController.edit(id: Long)
+GET         /exam/edit/:id                        controllers.ExamController.edit(id: Long)
+GET         /exam/delete/:id                      controllers.ExamController.delete(id: Long)
+GET         /exam/detail/:id                      controllers.ExamController.detail(id: Long)
+GET         /exam                                 controllers.ExamController.blank()
+GET         /exam/create                          controllers.ExamController.create()
+GET         /exam/enrol/:id                       controllers.ExamController.enrol(id: Long)
+GET         /exam/cancel/:id                      controllers.ExamController.cancel(id: Long)
+
 
 #Homeworks
 
-GET         /homeworks                    controllers.HomeworksController.blank()
-GET         /homeworks/create/:id         controllers.HomeworksController.create(id: Long)
-POST        /homeworks/create             controllers.HomeworksController.add()
+GET         /homeworks                            controllers.HomeworksController.blank()
+GET         /homeworks/create/:subjectCode        controllers.HomeworksController.create(subjectCode: String)
+GET         /homeworks/listHomeworks/:id          controllers.HomeworksController.listHomeworks(id: Long)
+GET         /homeworks/work/:id                   controllers.HomeworksController.work(id: Long)
+GET         /homeworks/submitted/:id              controllers.HomeworksController.seeSubmitted(id: Long)
+POST        /homeworks/create                     controllers.HomeworksController.add()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                 controllers.Assets.at(path="/public", file)
+GET         /assets/*file                         controllers.Assets.at(path="/public", file)
 

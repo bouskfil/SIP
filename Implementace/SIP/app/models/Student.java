@@ -125,8 +125,16 @@ public class Student extends Model {
         this.tasks = tasks;
     }
 
+    public void addExam(Exam e) {
+        this.exams.add(e);
+    }
+
     public List<Exam> getExams() {
         return exams;
+    }
+
+    public void removeExam(Exam exam) {
+        exams.remove(exam);
     }
 
     public void setExams(List<Exam> exams) {

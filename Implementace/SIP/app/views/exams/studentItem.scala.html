@@ -1,0 +1,15 @@
+@(exam: Exam, stud: Student)
+
+<tr data-project="@exam.getId">
+
+    @if(stud.getExams().contains(exam)) {
+        <th> <a class="name" href="@routes.ExamController.cancel(exam.getId)">Odhlásit</a>
+        </th>
+    }
+    @if(!(stud.getExams().contains(exam))) {
+        <th> <a class="name" href="@routes.ExamController.enrol(exam.getId)">Přihlásit</a>
+        </th>
+    }
+
+    @views.html.exams.item(exam)
+</tr>

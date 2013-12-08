@@ -1,7 +1,7 @@
 @(subject: Subject, user: User)
 <div  data-project="@subject.getId">
-    <tr>
-        <td><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.create(subject.getId)">@subject.getName</a></span></td>
-        <td>@subject.getCode</td>
+    <tr>        
+         <td><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.listHomeworks(subject.getId)">@subject.getName</a></span></td>
+         <td>@subject.getCode</td>
     </tr>
 </div>

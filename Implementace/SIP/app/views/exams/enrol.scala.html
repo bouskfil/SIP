@@ -1,0 +1,13 @@
+@(exam: Exam, loggedUser: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @title = {
+        Zkouška v pořádku přihlášena
+    }
+
+
+@main(title, nav = "exam", user = loggedUser) {
+    @views.html.exams.detail(exam, loggedUser);
+}
