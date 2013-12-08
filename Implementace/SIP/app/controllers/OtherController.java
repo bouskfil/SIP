@@ -23,17 +23,7 @@ public class OtherController extends Controller{
     final static Form<User> userForm = form(User.class);
 
     public static Result choose() {
-        switch(User.find.byId(session("email")).getUserRole()){
-            case "admin": 
-                return ok(choose.render(User.find.byId(session("email"))));
-            case "student": 
-                return ok(choose.render(User.find.byId(session("email"))));
-                //return ok("Student tu zatím nic nemá.");
-            case "teacher": 
-                return ok(choose.render(User.find.byId(session("email"))));
-            default:
-                return ok("Neznámá uživatelská role.");           
-        }        
+        return ok(choose.render(User.find.byId(session("email"))));
     }
     
     public static Result create() {
@@ -68,14 +58,18 @@ public class OtherController extends Controller{
     }
     
     public static Result add() {       
-        Form<User> filledForm = userForm.bindFromRequest();       
+        Form<User> filledForm = userForm.bindFromRequest();
+        List<User> userlist = User.find.where().ilike("email", "%"+filledForm.field("email").value()+"%").findList();
         
-        // Check repeated password
+        if(!userlist.isEmpty()){
+            filledForm.reject("email", "Tento email je již v databázi.");
+        }
+        
         if(!filledForm.field("password").valueOr("").isEmpty()) {
             if(!filledForm.field("password").valueOr("").equals(filledForm.field("repeatPassword").value())) {
                 filledForm.reject("repeatPassword", "Hesla nejsou stejná.");
             }
-        }        
+        }       
         
         if(filledForm.hasErrors()) {
             return badRequest(create.render(filledForm, User.find.byId(session("email"))));
@@ -93,15 +87,12 @@ public class OtherController extends Controller{
                     newTeacher.save();
                     break;
             }
-            
             return ok(createSummary.render(user, User.find.byId(session("email"))));
         }
-        
     }
     
     public static Result changePassword(String name,String lastName, String email, String userRole){        
         Form<User> filledForm = userForm.bindFromRequest();
-        
         
         if(filledForm.field("oldPassword").value().equals(User.find.byId(session("email")).getPassword())){
             if(!filledForm.field("password").valueOr("").isEmpty()) {
@@ -124,5 +115,4 @@ public class OtherController extends Controller{
             return ok(editPasswordSummary.render(user, User.find.byId(session("email"))));
         }
     }
-    
 }
