@@ -34,7 +34,6 @@ public class SubjectController extends Controller {
 
     public static Result add() {
         Form<Subject> filledForm = formSubject.bindFromRequest();
-
         if(filledForm.hasErrors()) {
             return badRequest(form.render(filledForm, User.find.byId(session("email"))));
         } else {
@@ -84,13 +83,19 @@ public class SubjectController extends Controller {
         }
     }
 
-
     public static Result enrolList() {
-        User u = User.find.byId(session("email"));
-        List<Student> studlist = Student.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
-        Student stud = studlist.get(0);
+        Student stud = User.getStudent();
         return ok(enrolList.render(stud, User.find.byId(session("email"))));
     }
+
+    public static Result leaveSubject(Long id){
+        Student stud = User.getStudent();
+        Subject sub = Subject.find.byId(id);
+        stud.getSubjects().remove(sub);
+        stud.update();
+        return ok(detail.render(Subject.find.byId(id), User.find.byId(session("email"))));
+    }
+
 
 
 

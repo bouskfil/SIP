@@ -10,17 +10,16 @@ POST        /login                        controllers.Application.authenticate()
 
 # Subject
 
-POST        /subject/create               controllers.SubjectController.add()
+GET         /subject/create               controllers.SubjectController.create()
+POST        /subject/add/                 controllers.SubjectController.add()
 POST        /subject/edited/:id           controllers.SubjectController.save(id: Long)
-POST        /subject/edit/:id             controllers.SubjectController.edit(id: Long)
 GET         /subject/edit/:id             controllers.SubjectController.edit(id: Long)
-POST        /subject/delete/:id           controllers.SubjectController.delete(id: Long)
 GET         /subject/delete/:id           controllers.SubjectController.delete(id: Long)
 GET         /subject/enrol/:id            controllers.SubjectController.enrol(id: Long)
 GET         /subject/enrolList/           controllers.SubjectController.enrolList()
+GET         /subject/leave/:id            controllers.SubjectController.leaveSubject(id: Long)
 GET         /subject/detail/:id           controllers.SubjectController.detail(id: Long)
 GET         /subject                      controllers.SubjectController.blank()
-GET         /subject/create               controllers.SubjectController.create()
 
 #Other
 

@@ -124,5 +124,6 @@ public class OtherController extends Controller{
             return ok(editPasswordSummary.render(user, User.find.byId(session("email"))));
         }
     }
+
     
 }

@@ -7,7 +7,6 @@
 
         Předměty
         @if(loggedUser.getUserRole().equals("admin")) {
-
             <small><a href="@routes.SubjectController.create">přidat předmět</a></small>
         }
         @if(loggedUser.getUserRole().equals("student")) {

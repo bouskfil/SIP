@@ -23,8 +23,7 @@ public class Subject extends Model{
 
     @Id
     private Long id;
-    @ManyToMany(cascade = CascadeType.REMOVE)
-    private List<Student> studentList = new ArrayList<Student>();
+
     @Constraints.Required
     private String name;
     @Constraints.Required
@@ -37,6 +36,8 @@ public class Subject extends Model{
     private String code;
 
 
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Student> studentList = new ArrayList<Student>();
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Teacher> teachers = new ArrayList<Teacher>();
 
