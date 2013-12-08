@@ -24,13 +24,13 @@ GET         /subject/create                       controllers.SubjectController.
 
 #Other
 
-GET         /other                                controllers.OtherController.choose()
-GET         /other/create                         controllers.OtherController.create()
-GET         /other/showAll                        controllers.OtherController.showAll()
-GET         /other/showAllStudents                controllers.OtherController.showAllStudents()
-GET         /other/editPassword                   controllers.OtherController.editPassword()
-POST        /other/editPassword                   controllers.OtherController.changePassword(name: String, lastName: String, email: String, userRole: String)
-POST        /other/create                         controllers.OtherController.add()
+GET         /administration                       controllers.AdministrationController.choose()
+GET         /administration/create                controllers.AdministrationController.create()
+GET         /administration/showAll               controllers.AdministrationController.showAll()
+GET         /administration/showAllStudents       controllers.AdministrationController.showAllStudents()
+GET         /administration/editPassword          controllers.AdministrationController.editPassword()
+POST        /administration/editPassword          controllers.AdministrationController.changePassword(name: String, lastName: String, email: String, userRole: String)
+POST        /administration/create                controllers.AdministrationController.add()
 
 # Exams
 

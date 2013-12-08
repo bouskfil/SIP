@@ -9,7 +9,7 @@ package controllers;
 import models.*;
 import play.data.*;
 import play.mvc.*;
-import views.html.other.*;
+import views.html.administration.*;
 import java.util.List;
 import java.util.ArrayList;
 import static play.data.Form.*;
@@ -18,7 +18,7 @@ import static play.data.Form.*;
  * @author Dominik
  */
 @Security.Authenticated(Secured.class)
-public class OtherController extends Controller{
+public class AdministrationController extends Controller{
     
     final static Form<User> userForm = form(User.class);
 
