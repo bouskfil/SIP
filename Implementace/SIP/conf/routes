@@ -21,19 +21,6 @@ GET         /subject/leave/:id                    controllers.SubjectController.
 GET         /subject/detail/:id                   controllers.SubjectController.detail(id: Long)
 GET         /subject                              controllers.SubjectController.blank()
 
-
-POST        /subject/create                       controllers.SubjectController.add()
-POST        /subject/edited/:id                   controllers.SubjectController.save(id: Long)
-POST        /subject/edit/:id                     controllers.SubjectController.edit(id: Long)
-GET         /subject/edit/:id                     controllers.SubjectController.edit(id: Long)
-POST        /subject/delete/:id                   controllers.SubjectController.delete(id: Long)
-GET         /subject/delete/:id                   controllers.SubjectController.delete(id: Long)
-GET         /subject/enrol/:id                    controllers.SubjectController.enrol(id: Long)
-GET         /subject/enrolList/                   controllers.SubjectController.enrolList()
-GET         /subject/detail/:id                   controllers.SubjectController.detail(id: Long)
-GET         /subject                              controllers.SubjectController.blank()
-GET         /subject/create                       controllers.SubjectController.create()
-
 #Other
 
 GET         /other                                controllers.AdministrationController.choose()
@@ -57,31 +44,6 @@ GET         /exam                                 controllers.ExamController.bla
 GET         /exam/create                          controllers.ExamController.create()
 GET         /exam/enrol/:id                       controllers.ExamController.enrol(id: Long)
 GET         /exam/cancel/:id                      controllers.ExamController.cancel(id: Long)
-
-#Other
-
-GET         /administration                       controllers.AdministrationController.choose()
-GET         /administration/create                controllers.AdministrationController.create()
-GET         /administration/showAll               controllers.AdministrationController.showAll()
-GET         /administration/showAllStudents       controllers.AdministrationController.showAllStudents()
-GET         /administration/editPassword          controllers.AdministrationController.editPassword()
-POST        /administration/editPassword          controllers.AdministrationController.changePassword(name: String, lastName: String, email: String, userRole: String)
-POST        /administration/create                controllers.AdministrationController.add()
-
-# Exams
-
-POST        /exam/create                          controllers.ExamController.add()
-POST        /exam/delete/:id                      controllers.ExamController.delete(id: Long)
-POST        /exam/edited/:id                      controllers.ExamController.save(id: Long)
-POST        /exam/edit/:id                        controllers.ExamController.edit(id: Long)
-GET         /exam/edit/:id                        controllers.ExamController.edit(id: Long)
-GET         /exam/delete/:id                      controllers.ExamController.delete(id: Long)
-GET         /exam/detail/:id                      controllers.ExamController.detail(id: Long)
-GET         /exam                                 controllers.ExamController.blank()
-GET         /exam/create                          controllers.ExamController.create()
-GET         /exam/enrol/:id                       controllers.ExamController.enrol(id: Long)
-GET         /exam/cancel/:id                      controllers.ExamController.cancel(id: Long)
-
 
 #Homeworks
 
