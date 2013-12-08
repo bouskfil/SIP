@@ -14,13 +14,14 @@
                 <li><span style="font-size: 15px"><a class="name" href="@routes.HomeworksController.work(homework.getId)">@homework.getName</a></span></li>                
             }
             </ul>
+        }
+        
+    @if(user.getUserRole.equals("teacher")){
         <div class="actions">
-            @if(user.getUserRole.equals("teacher")){
-                @helper.form(action = routes.HomeworksController.create(sub.getCode)) {
-                    <input class="btn primary" type="submit" value="Zadat úkol">
-                    <a href="@routes.HomeworksController.blank" class="btn">Zpět</a>
-                }
-            }
+        @helper.form(action = routes.HomeworksController.create(sub.getCode)) {
+            <input class="btn primary" type="submit" value="Zadat úkol">
+            <a href="@routes.HomeworksController.blank" class="btn">Zpět</a>
+        }
         </div>
-    }    
+    }
 }

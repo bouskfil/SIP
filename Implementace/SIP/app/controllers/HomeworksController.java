@@ -41,7 +41,6 @@ public class HomeworksController extends Controller {
     
     public static Result create(String code){
         if(User.find.byId(session("email")).getUserRole().equals("teacher")){
-            //Subject sub = Subject.find.byId(id);
             Homework home = new Homework();
             home.setSubjectCode(code);
             Form<Homework> prefilledForm = form(Homework.class).fill(home);
@@ -51,7 +50,12 @@ public class HomeworksController extends Controller {
     }
     
     public static Result add(){
-        Form<Homework> filledForm = homeworkForm.bindFromRequest();   
+        Form<Homework> filledForm = homeworkForm.bindFromRequest();
+        List<Homework> homelist = Homework.find.where().ilike("name", "%"+filledForm.field("name").value()+"%").findList();
+        
+        if(!homelist.isEmpty()){
+            filledForm.reject("name", "Již existuje úkol s tímto názvem.");
+        }
         
         if(filledForm.hasErrors()) {
             return badRequest(addHomework.render(filledForm, User.find.byId(session("email"))));

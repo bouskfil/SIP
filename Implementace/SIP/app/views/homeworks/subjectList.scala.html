@@ -5,6 +5,9 @@
 @main(title,nav = "homework", user = user) {
     
     @if(user.getUserRole().equals("teacher")){
+    @if(teacher.getSubjects().isEmpty){
+    <p>Neučíte žádný předmět.</p>
+    }else{
     <table>
         <thead>
             <tr>
@@ -19,7 +22,11 @@
         </tbody>
     </table>
     }
+    }
     @if(user.getUserRole().equals("student")){
+    @if(student.getSubjects().isEmpty){
+    <p>Nemáte zapsaný žádný předmět.</p>
+    }else{
     <table>
         <thead>
             <tr>
@@ -33,5 +40,6 @@
         }
         </tbody>
     </table>
+    }
     }
 }
