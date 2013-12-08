@@ -13,6 +13,9 @@
 
     <h3>Termíny zkoušek</h3>
 
+    @if(exams.isEmpty){
+        <p>Žádné termíny nejsou vypsány.</p>
+    }else{
     <table>
         @views.html.exams.head()
 
@@ -25,4 +28,5 @@
         }
         </tbody>
     </table>
+    }
 }
