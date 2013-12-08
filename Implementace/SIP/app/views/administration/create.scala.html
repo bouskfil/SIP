@@ -5,36 +5,31 @@
 @import scala._
 
 @title = {
-        Změnit heslo
+        Vytvořit nového uživatele
     }
-    
-@main(title, nav = "other", user = user){
+@main(title,nav = "administration", user = user) {
 
+@helper.form(action = routes.AdministrationController.add) {
 
-     
+        <fieldset>
+            <legend>Informace o uživateli</legend>
 
-    @helper.form(action = routes.OtherController.changePassword(user.getName(), user.getLastName(), user.getEmail(), user.getUserRole())) {
-
-        <fieldset> 
             @inputText(
                 userForm("name"),
                 '_label -> "Jméno",
                 '_help -> "Zadejte jméno.",
-                'readonly -> "readonly",
                 '_error -> userForm.globalError
             )
             @inputText(
                 userForm("lastName"),
                 '_label -> "Příjmení",
                 '_help -> "Zadejte příjmení.",
-                'readonly -> "readonly",
                 '_error -> userForm.globalError
             )
 
             @inputText(
                 userForm("email"),
                 '_label -> "Email",
-                'readonly -> "readonly",
                 '_help -> "Zadejte email."
             )
             @select(
@@ -42,14 +37,7 @@
                 options = options(User.getUserRoles),
                 '_default -> "--- Vyberte uživatelskou roli ---",
                 '_label -> "Uživatelská role",
-                'readonly -> "readonly",
                 '_help -> "Vyberte uživatelskou roli pro vytvářeného uživatele."
-            )
-            @inputPassword(
-                userForm("oldPassword"),
-                '_label -> "Původní heslo",
-                '_help -> "Zadejte stávající heslo.",
-                '_error -> userForm.error("password")
             )
             @inputPassword(
                 userForm("password"),
@@ -68,9 +56,10 @@
 
 
         <div class="actions">
-            <input type="submit" class="btn primary" value="Změnit heslo">
-            <a href="@routes.OtherController.choose" class="btn">Zrušit</a>
+            <input type="submit" class="btn primary" value="Vytvořit uživatele">
+            <a href="@routes.AdministrationController.choose" class="btn">Zrušit</a>
         </div>
 
     }
+
 }
