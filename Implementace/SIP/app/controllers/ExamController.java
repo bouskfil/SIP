@@ -59,8 +59,10 @@ public class ExamController extends Controller {
         }
         else {
             Exam exam = filledForm.get();
-            exam.copyExam(id);
-            return redirect(routes.ExamController.blank());
+            if (exam.copyExam(id))
+              return redirect(routes.ExamController.blank());
+            else
+              return redirect(routes.ExamController.edit(id));
         }
     }
 
@@ -90,8 +92,10 @@ public class ExamController extends Controller {
         }
         else {
             Exam exam = filledForm.get();
-            exam.save();
-            return redirect(routes.ExamController.blank());
+            if (Exam.save(exam))
+              return redirect(routes.ExamController.blank());
+            else
+              return badRequest(form.render(filledForm, User.find.byId(session("email"))));
         }
     }
 

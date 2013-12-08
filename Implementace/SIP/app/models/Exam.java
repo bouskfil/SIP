@@ -9,6 +9,9 @@ import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.io.*;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,7 +30,9 @@ public class Exam extends Model {
     @Constraints.Required
     private String subjectCode;
     @Constraints.Required
-    private Date date;
+    //private Date date;
+    //private SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    String date;
     @Constraints.Required
     private String room;
     @Constraints.Required
@@ -42,13 +47,21 @@ public class Exam extends Model {
         exam.save();
     }
 
-    public void copyExam(Long id){
+    public boolean copyExam(Long id){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        try {
+            sdf.setLenient(false);
+            Date d = sdf.parse(this.date);
+        } catch(Exception e) {
+            return false;
+        }
         Exam oldExam = Exam.find.byId(id);
         oldExam.subjectCode = this.subjectCode;
         oldExam.date = this.date;
         oldExam.room = this.room;
         oldExam.examiner = this.examiner;
         oldExam.update();
+        return true;
     }
 
 
@@ -64,6 +77,19 @@ public class Exam extends Model {
         students.add(student);
     }
 
+    public static boolean save(Exam exam) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        try {
+            sdf.setLenient(false);
+            Date d = sdf.parse(exam.date);
+            exam.save();
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+
     public void removeStudent(Student student) {
         students.remove(student);
     }
@@ -71,20 +97,6 @@ public class Exam extends Model {
     public boolean isAdded(Student student) {
         return students.contains(student);
     }
-
-    public static List<Exam> all(){
-        return find.all();
-    }
-
-    public static List<String> getAllCodes(){
-        List<String> codes = new ArrayList();
-        for(Exam e : all()) {
-            if (!(codes.contains(e.subjectCode)))
-                codes.add(e.subjectCode);
-        }
-        return codes;
-    }
-
 
 
     public List<Student> getStudents() {
@@ -107,11 +119,11 @@ public class Exam extends Model {
         this.subjectCode = subjectCode;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

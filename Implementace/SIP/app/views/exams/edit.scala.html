@@ -17,7 +17,7 @@
 
             @select(
                 examForm("subjectCode"),
-                options = options(Exam.getAllCodes),
+                options = options(Subject.getAllCodes),
                 '_default -> "--- Vyberte kód předmětu ---",
                 '_label -> "Kód předmětu",
                 '_help -> "Vyberte kód předmětu."

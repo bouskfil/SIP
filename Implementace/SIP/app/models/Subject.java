@@ -82,6 +82,20 @@ public class Subject extends Model{
         return code;
     }
 
+    public static List<Subject> all(){
+        return find.all();
+    }
+
+    public static List<String> getAllCodes(){
+        List<String> codes = new ArrayList();
+        for(Subject s : all()) {
+            //if (!(codes.contains(e.subjectCode)))
+            codes.add(s.code);
+        }
+        return codes;
+    }
+
+
     public void setCode(String code) {
         this.code = code;
     }

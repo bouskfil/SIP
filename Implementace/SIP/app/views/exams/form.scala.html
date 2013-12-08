@@ -17,7 +17,7 @@
 
             @select(
                 examForm("subjectCode"),
-                options = options(Exam.getAllCodes),
+                options = options(Subject.getAllCodes),
                 '_default -> "--- Vyberte kód předmětu ---",
                 '_label -> "Kód předmětu",
                 '_help -> "Vyberte kód předmětu."
@@ -25,7 +25,7 @@
             )
             @inputText(
                 examForm("date"),
-                '_label -> "Datum zkoušky",
+                '_label -> "Datum zkoušky (dd/MM/yyyy hh:mm)",
                 '_help -> "Zadejte datum zkoušky."
             )
 
