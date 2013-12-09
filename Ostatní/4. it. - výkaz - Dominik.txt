@@ -1,0 +1,7 @@
+Úkoly základ 3h
+Zadání úkolu 4h
+Zobrazení úkolu studentùm 4h
+Akceptaèní testy úkoly 2h
+Zpráva o implementaci 1h
+Akceptaèní testy administrace 2h
+Uživatelský manuál 2h
