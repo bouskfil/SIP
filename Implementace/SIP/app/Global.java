@@ -11,5 +11,6 @@ public class Global extends GlobalSettings {
         if (Subject.find.findRowCount() == 0) {
             Ebean.save((List) Yaml.load("initial-data.yml"));
         }
+
     }
 }

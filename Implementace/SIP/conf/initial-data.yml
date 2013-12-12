@@ -62,7 +62,7 @@
   email:      admin@admin.com
   name:       admin
   lastName:   admin
-  password:   admin
+  password:   adminn
   userRole:   admin
   
 - &student !!models.User
