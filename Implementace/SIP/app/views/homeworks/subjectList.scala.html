@@ -1,0 +1,45 @@
+@(user: User, student: Student, teacher: Teacher)
+@title = {
+        Domácí úkoly
+    }
+@main(title,nav = "homework", user = user) {
+    
+    @if(user.getUserRole().equals("teacher")){
+    @if(teacher.getSubjects().isEmpty){
+    <p>Neučíte žádný předmět.</p>
+    }else{
+    <table>
+        <thead>
+            <tr>
+                <th>Název předmětu</th>
+                <th>Kód</th>
+            </tr>
+        </thead>
+        <tbody>
+        @teacher.getSubjects.map { subject =>
+            @views.html.homeworks.itemSubject(subject, user)
+        }
+        </tbody>
+    </table>
+    }
+    }
+    @if(user.getUserRole().equals("student")){
+    @if(student.getSubjects().isEmpty){
+    <p>Nemáte zapsaný žádný předmět.</p>
+    }else{
+    <table>
+        <thead>
+            <tr>
+                <th>Název předmětu</th>
+                <th>Kód</th>
+            </tr>
+        </thead>
+        <tbody>
+        @student.getSubjects.map { subject =>
+            @views.html.homeworks.itemSubject(subject, user)
+        }
+        </tbody>
+    </table>
+    }
+    }
+}

@@ -1,0 +1,3 @@
+implementace UCs 10h
+ladìní, testování 3h
+dokonèení, zhodnocení 1h

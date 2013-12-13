@@ -23,7 +23,6 @@ public class Subject extends Model{
 
     @Id
     private Long id;
-    private List<Student> studentList;
 
     @Constraints.Required
     private String name;
@@ -38,7 +37,12 @@ public class Subject extends Model{
 
 
     @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Student> studentList = new ArrayList<Student>();
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Teacher> teachers = new ArrayList<Teacher>();
+    
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<Homework> homeworks = new ArrayList<Homework>();
 
     public static Finder<Long, Subject> find = new Finder(Long.class, Subject.class);
 
@@ -66,10 +70,32 @@ public class Subject extends Model{
         oldSubject.information = this.information;
         oldSubject.update();
     }
+    public static Subject findByCode(String code){
+        List<Subject> sublist = Subject.find.where().ilike("code", "%"+code+"%").findList();
+        if(!sublist.isEmpty()){
+            return sublist.get(0);
+        }else{
+            return null;
+        }
+    }
 
     public String getCode() {
         return code;
     }
+
+    public static List<Subject> all(){
+        return find.all();
+    }
+
+    public static List<String> getAllCodes(){
+        List<String> codes = new ArrayList();
+        for(Subject s : all()) {
+            //if (!(codes.contains(e.subjectCode)))
+            codes.add(s.code);
+        }
+        return codes;
+    }
+
 
     public void setCode(String code) {
         this.code = code;
@@ -129,5 +155,17 @@ public class Subject extends Model{
 
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
+    }
+    
+    public List<Homework> getHomeworks() {
+        return homeworks;
+    }
+
+    public void setHomeworks(List<Homework> homeworks) {
+        this.homeworks = homeworks;
+    }
+    
+    public void addHomework(Homework homework) {
+        this.homeworks.add(homework);
     }
 }

@@ -1,7 +1,24 @@
+# Student
+- &mrkev !!models.Student
+  name: Jan
+  lastname: Mrkev
+  email: student@sip.com
+      
+- &anglictina !!models.Subject
+  name:       Angličtina
+  department:    Katedra Jazyků
+  code:       ANG22SD
+  studentList:
+      - *mrkev
+
 # Teachers
 
 - &novak !!models.Teacher
-  name: Jan Novák
+  name: Jan
+  lastname: Novák
+  email: teacher@teacher.com
+  subjects:
+      - *anglictina
 
 - &svoboda !!models.Teacher
   name:       Tomáš Svoboda
@@ -27,6 +44,7 @@
   teachers:
       - *novak
       - *rychla
+ 
 
 - &cestina !!models.Subject
   name:       Čeština
@@ -37,31 +55,28 @@
       - *hruby
       - *skokava
 
-- &anglictina !!models.Subject
-  name:       Angličtina
-  department:    Katedra Jazyků
-  code:       ANG22SD
-  teachers:
+
 
 # Users
 - &admin !!models.User
   email:      admin@admin.com
   name:       admin
   lastName:   admin
-  password:   admin
+  password:   adminn
   userRole:   admin
   
 - &student !!models.User
   email:      student@student.com
-  name:       student
-  lastName:   student
+  name:       Petr
+  lastName:   Rychlý
   password:   student
   userRole:   student
   
+  
 - &teacher !!models.User
   email:      teacher@teacher.com
-  name:       teacher
-  lastName:   teacher
+  name:       Jan
+  lastName:   Novak
   password:   teacher
   userRole:   teacher
 
@@ -69,12 +84,30 @@
 
 - &zk1     !!models.Exam
   subjectCode: MAT123
-  date:        2014-01-12
+  date:        10/01/2014 08:00
   room:        KNE212
   examiner:    Jan Novák
 
 - &zk2     !!models.Exam
   subjectCode: CZE1332
-  date:        2014-01-25
+  date:        23/01/2014 10:00
   room:        KNE101
   examiner:    Lucie Rychlá
+
+- &zk3     !!models.Exam
+  subjectCode: MAT123
+  date:        28/01/2014 09:30
+  room:        KNE212
+  examiner:    Jan Novák
+
+#Student
+
+- &rychly !!models.Student
+  name: Petr
+  lastname: Rychlý
+  email: student@student.com
+  subjects:
+      - *anglictina
+      - *matematika
+      - *cestina
+      

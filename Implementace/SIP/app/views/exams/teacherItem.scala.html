@@ -1,0 +1,9 @@
+@(exam: Exam, teacher: Teacher)
+
+<tr data-project="@exam.getId">
+
+    <th> <a class="name" href="@routes.ExamController.edit(exam.getId)">Upravit</a>
+    </th>
+
+    @views.html.exams.item(exam)
+</tr>

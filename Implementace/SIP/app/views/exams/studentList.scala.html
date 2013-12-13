@@ -1,0 +1,27 @@
+@(exams: List[Exam], stud: Student, loggedUser: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @title = {
+        Zkoušky
+    }
+
+@main(title, nav = "exam", user = loggedUser) {
+
+    <h3>Termíny zkoušek</h3>
+
+    @if(exams.isEmpty){
+        <p>Žádné termíny nejsou vypsány.</p>
+    }else{
+    <table>
+        @views.html.exams.head()
+
+        <tbody>
+        @exams.map { exam =>
+            @views.html.exams.studentItem(exam, stud)
+        }
+        </tbody>
+    </table>
+    }
+}

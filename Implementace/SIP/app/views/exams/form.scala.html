@@ -14,6 +14,35 @@
 
         <fieldset>
             <legend>Informace o zkoušce</legend>
+
+            @select(
+                examForm("subjectCode"),
+                options = options(Subject.getAllCodes),
+                '_default -> "--- Vyberte kód předmětu ---",
+                '_label -> "Kód předmětu",
+                '_help -> "Vyberte kód předmětu."
+
+            )
+            @inputText(
+                examForm("date"),
+                '_label -> "Datum zkoušky (dd/MM/yyyy hh:mm)",
+                '_help -> "Zadejte datum zkoušky."
+            )
+
+            @inputText(
+                examForm("room"),
+                '_label -> "Místnost",
+                '_help -> "Zadejte místnost."
+            )
+
+            @select(
+                examForm("examiner"),
+                options = options(Teacher.getAllNames),
+                '_default -> "--- Vyberte zkoušejícího ---",
+                '_label -> "Zkoušející",
+                '_help -> "Vyberte zkoušejícího."
+            )
+
         </fieldset>
 
 

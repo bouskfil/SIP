@@ -1,0 +1,15 @@
+@(user: User)
+@title = {
+        Ostatní
+    }
+@main(title,nav = "administration", user = user) {
+
+@if(user.getUserRole().equals("admin")){
+    <p><h2><a href="@routes.AdministrationController.create">Přidat uživatele</a></h2></p>
+    <p><h2><a href="@routes.AdministrationController.showAll">Zobrazit všechny uživatele</a></h2></p>
+}
+@if(user.getUserRole().equals("teacher")){
+    <p><h2><a href="@routes.AdministrationController.showAllStudents">Zobrazit studenty</a></h2></p>
+}
+<p><h2><a href="@routes.AdministrationController.editPassword">Změnit heslo</a></h2></p>
+}

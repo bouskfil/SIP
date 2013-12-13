@@ -7,17 +7,15 @@ package models;
  * Time: 22:25
  */
 
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import play.data.validation.Constraints;
-import play.db.ebean.Model;
-import javax.validation.*;
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
+
+import static play.mvc.Controller.session;
 
 @Entity
 public class User extends Model {
@@ -52,6 +50,25 @@ public class User extends Model {
         this.lastName = lastName;
         this.password = password;
         this.userRole = userRole;
+    }
+
+    public static Student getStudent(){
+        User u = User.find.byId(session("email"));
+        List<Student> studlist = Student.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
+        if(!studlist.isEmpty()){
+            return studlist.get(0);
+        }else{
+            return null;
+        }
+    }
+    public static Teacher getTeacher(){
+        User u = User.find.byId(session("email"));
+        List<Teacher> teachlist = Teacher.find.where().ilike("email", "%"+u.getEmail()+"%").findList();
+        if(!teachlist.isEmpty()){
+            return teachlist.get(0);
+        }else{
+            return null;
+        }
     }
     
     public String getEmail(){

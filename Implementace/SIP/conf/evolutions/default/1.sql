@@ -14,10 +14,19 @@ create table address (
 create table exam (
   id                        bigint not null,
   subject_code              varchar(255),
-  date                      timestamp,
+  date                      varchar(255),
   room                      varchar(255),
   examiner                  varchar(255),
   constraint pk_exam primary key (id))
+;
+
+create table homework (
+  id                        bigint not null,
+  subject_code              varchar(255),
+  name                      varchar(255),
+  deadline                  timestamp,
+  description               varchar(255),
+  constraint pk_homework primary key (id))
 ;
 
 create table schedule (
@@ -56,6 +65,8 @@ create table task (
 create table teacher (
   id                        bigint not null,
   name                      varchar(255),
+  lastname                  varchar(255),
+  email                     varchar(255),
   constraint pk_teacher primary key (id))
 ;
 
@@ -99,10 +110,22 @@ create table student_exam (
   constraint pk_student_exam primary key (student_id, exam_id))
 ;
 
+create table subject_student (
+  subject_id                     bigint not null,
+  student_id                     bigint not null,
+  constraint pk_subject_student primary key (subject_id, student_id))
+;
+
 create table subject_teacher (
   subject_id                     bigint not null,
   teacher_id                     bigint not null,
   constraint pk_subject_teacher primary key (subject_id, teacher_id))
+;
+
+create table subject_homework (
+  subject_id                     bigint not null,
+  homework_id                    bigint not null,
+  constraint pk_subject_homework primary key (subject_id, homework_id))
 ;
 
 create table task_student (
@@ -110,9 +133,17 @@ create table task_student (
   student_id                     bigint not null,
   constraint pk_task_student primary key (task_id, student_id))
 ;
+
+create table teacher_subject (
+  teacher_id                     bigint not null,
+  subject_id                     bigint not null,
+  constraint pk_teacher_subject primary key (teacher_id, subject_id))
+;
 create sequence address_seq;
 
 create sequence exam_seq;
+
+create sequence homework_seq;
 
 create sequence schedule_seq;
 
@@ -155,13 +186,25 @@ alter table student_exam add constraint fk_student_exam_student_01 foreign key (
 
 alter table student_exam add constraint fk_student_exam_exam_02 foreign key (exam_id) references exam (id) on delete restrict on update restrict;
 
+alter table subject_student add constraint fk_subject_student_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
+
+alter table subject_student add constraint fk_subject_student_student_02 foreign key (student_id) references student (id) on delete restrict on update restrict;
+
 alter table subject_teacher add constraint fk_subject_teacher_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
 
 alter table subject_teacher add constraint fk_subject_teacher_teacher_02 foreign key (teacher_id) references teacher (id) on delete restrict on update restrict;
 
+alter table subject_homework add constraint fk_subject_homework_subject_01 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
+
+alter table subject_homework add constraint fk_subject_homework_homework_02 foreign key (homework_id) references homework (id) on delete restrict on update restrict;
+
 alter table task_student add constraint fk_task_student_task_01 foreign key (task_id) references task (id) on delete restrict on update restrict;
 
 alter table task_student add constraint fk_task_student_student_02 foreign key (student_id) references student (id) on delete restrict on update restrict;
+
+alter table teacher_subject add constraint fk_teacher_subject_teacher_01 foreign key (teacher_id) references teacher (id) on delete restrict on update restrict;
+
+alter table teacher_subject add constraint fk_teacher_subject_subject_02 foreign key (subject_id) references subject (id) on delete restrict on update restrict;
 
 # --- !Downs
 
@@ -172,6 +215,8 @@ drop table if exists address;
 drop table if exists exam;
 
 drop table if exists exam_student;
+
+drop table if exists homework;
 
 drop table if exists schedule;
 
@@ -187,13 +232,19 @@ drop table if exists student_exam;
 
 drop table if exists subject;
 
+drop table if exists subject_student;
+
 drop table if exists subject_teacher;
+
+drop table if exists subject_homework;
 
 drop table if exists task;
 
 drop table if exists task_student;
 
 drop table if exists teacher;
+
+drop table if exists teacher_subject;
 
 drop table if exists user;
 
@@ -202,6 +253,8 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists address_seq;
 
 drop sequence if exists exam_seq;
+
+drop sequence if exists homework_seq;
 
 drop sequence if exists schedule_seq;
 

@@ -1,0 +1,65 @@
+@(userForm: Form[User], user: User)
+
+@import helper._
+@import helper.twitterBootstrap._
+@import scala._
+
+@title = {
+        Vytvořit nového uživatele
+    }
+@main(title,nav = "administration", user = user) {
+
+@helper.form(action = routes.AdministrationController.add) {
+
+        <fieldset>
+            <legend>Informace o uživateli</legend>
+
+            @inputText(
+                userForm("name"),
+                '_label -> "Jméno",
+                '_help -> "Zadejte jméno.",
+                '_error -> userForm.globalError
+            )
+            @inputText(
+                userForm("lastName"),
+                '_label -> "Příjmení",
+                '_help -> "Zadejte příjmení.",
+                '_error -> userForm.globalError
+            )
+
+            @inputText(
+                userForm("email"),
+                '_label -> "Email",
+                '_help -> "Zadejte email."
+            )
+            @select(
+                userForm("userRole"),
+                options = options(User.getUserRoles),
+                '_default -> "--- Vyberte uživatelskou roli ---",
+                '_label -> "Uživatelská role",
+                '_help -> "Vyberte uživatelskou roli pro vytvářeného uživatele."
+            )
+            @inputPassword(
+                userForm("password"),
+                '_label -> "Heslo",
+                '_help -> "Zadejte heslo, alespoň 6 znaků.",
+                '_error -> userForm.error("password")
+            )
+            @inputPassword(
+                userForm("repeatPassword"), 
+                '_label -> "Zopakujte heslo",
+                '_help -> "Napište heslo znovu.",
+                '_error -> userForm.error("password")
+            )
+
+        </fieldset>
+
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Vytvořit uživatele">
+            <a href="@routes.AdministrationController.choose" class="btn">Zrušit</a>
+        </div>
+
+    }
+
+}

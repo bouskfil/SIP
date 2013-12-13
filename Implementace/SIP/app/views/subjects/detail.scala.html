@@ -25,24 +25,35 @@
         } else {
 
             @for(teacher <- subject.getTeachers) {
-                <li>@teacher.name</li>
+                <li>@teacher.getName()</li>
             }
             <br>
         }
+        <h3>Studenti:</h3>
+        @if(subject.getStudentList.isEmpty){
+            <li>Předmět nemá žádné žáky.</li>
+        } else {
+
+            @for(student <- subject.getStudentList) {
+                <li>@student.getName @student.getLastname</li>
+            }
+            <br>
+            }
         </ul>
 
         <div class="actions">
             @if(user.getUserRole.equals("admin")){
-                @helper.form(action = routes.SubjectController.edit(subject.getId)) {
-                    <input class="btn primary" type="submit" value="Upravit">
+                    <a href="@routes.SubjectController.edit(subject.getId)" class="btn primary">Upravit</a>
+                    <a href="@routes.SubjectController.delete(subject.getId)" class="btn primary">Smazat</a>
                     <a href="@routes.SubjectController.blank" class="btn">Zpět</a>
-                }
             }
             @if(user.getUserRole.equals("student")){
-                @helper.form(action = routes.SubjectController.enrol(subject.getId)) {
-                    <input class="btn primary" type="submit" value="Zapsat">
-                    <a href="@routes.SubjectController.blank" class="btn">Zpět</a>
+                    @if(User.getStudent.getSubjects.contains(subject)){
+                        <a href="@routes.SubjectController.leaveSubject(subject.getId)" class="btn primary" onclick="return confirm('Opravdu chcete předmět smazat?');">Zrušit zapsání</a>
+                    } else {
+                        <a href="@routes.SubjectController.enrol(subject.getId)" class="btn primary">Zapsat</a>
                     }
+                    <a href="@routes.SubjectController.blank" class="btn">Zpět</a>
             }
         </div>
     </div>
