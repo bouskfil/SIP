@@ -1,6 +1,0 @@
-Oprava dle oponentury - 2h
-Dokumentace - 2h
-Implementace - 4h
-testování - 1h
-Úprava modelù - 4h
-Oponentura - 1h
