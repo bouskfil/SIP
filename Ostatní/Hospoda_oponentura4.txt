@@ -1,0 +1,4 @@
+BDM: prázdný diagram, chybí šipka mezi jídlo a menu, zaměstanec a směna
+BPM: Zaplacení, decision Vše zaplaceno, chybí pojmenování cest
+
+Chybí: Zpráva o testování, individuální zhodnocení, instalační manuál
