@@ -23,6 +23,7 @@ public class SubjectController extends Controller {
     final static Form<Subject> formSubject = form(Subject.class);
 
 
+
     public static Result blank() {
         List<Subject> subjects = Subject.find.where().orderBy("name asc").findList();
         return ok(list.render(subjects, User.find.byId(session("email"))));
@@ -95,8 +96,4 @@ public class SubjectController extends Controller {
         stud.update();
         return ok(detail.render(Subject.find.byId(id), User.find.byId(session("email"))));
     }
-
-
-
-
 }
